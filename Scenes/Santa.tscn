@@ -216,8 +216,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4tyq"]
-size = Vector2(16, 24)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_226sj"]
+radius = 8.0
+height = 24.0
 
 [node name="Santa" type="CharacterBody2D" node_paths=PackedStringArray("_animatedSprite")]
 script = ExtResource("1_6gvql")
@@ -233,5 +234,5 @@ animation = &"idle"
 frame_progress = 0.981251
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 4)
-shape = SubResource("RectangleShape2D_q4tyq")
+position = Vector2(1, 4)
+shape = SubResource("CapsuleShape2D_226sj")
