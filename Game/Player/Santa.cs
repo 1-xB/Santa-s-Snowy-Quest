@@ -41,7 +41,8 @@ public partial class Santa : CharacterBody2D
         // Throw snowball
         if (Input.IsActionJustPressed("throw") && _canThrow)
         {
-            ThrowSnowball();
+            _canThrow = false;
+            _animatedSprite.Play("throw");
         }
         
         // Update Animation
@@ -56,9 +57,20 @@ public partial class Santa : CharacterBody2D
 
     private void ThrowSnowball()
     {
-        // Create snowball
-        var snowball = (Snowball)GD.Load<PackedScene>("res://Scenes/Snowball.tscn").Instantiate();
+
+        Snowball snowball = (Snowball)GD.Load<PackedScene>("res://Scenes/Snowball.tscn").Instantiate();
         GetTree().Root.AddChild(snowball);
+        snowball.Position = Position;
+        if (_animatedSprite.FlipH) snowball.Speed = -snowball.Speed;
+        _canThrow = true;
+    }
+    
+    private void OnAnimationFinished()
+    {
+        if (_animatedSprite.Animation == "throw")
+        {
+            ThrowSnowball();
+        }
     }
 
 
@@ -82,6 +94,7 @@ public partial class Santa : CharacterBody2D
     
     private void UpdateAnimation()
     {
+        if (!_canThrow) return;
         if (!IsOnFloor())
         {
             if (_velocity.Y < 0)
@@ -98,13 +111,14 @@ public partial class Santa : CharacterBody2D
             if (_velocity.X != 0)
             {
                 _animatedSprite.Play("run");
+                _animatedSprite.FlipH = _velocity.X < 0;
             }
             else
             {
                 _animatedSprite.Play("idle");
             }
         }
-        _animatedSprite.FlipH = _velocity.X < 0;
+        
         
     }
 }
