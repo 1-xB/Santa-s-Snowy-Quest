@@ -6,6 +6,7 @@ public partial class Santa : CharacterBody2D
     private Vector2 _velocity = Vector2.Zero;
     [Export] AnimatedSprite2D _animatedSprite;
     
+    
     // Movement Variables
     [Export] public float Speed = 200f;
     [Export] public float Gravity = 500f;
@@ -13,30 +14,42 @@ public partial class Santa : CharacterBody2D
     [Export] public float Friction = 800f;
     
     // Snowball Variables
-    [Export] public PackedScene SnowballScene;
     bool _canThrow = true;
 
+    
+    // ledder variables
+    [Export] RayCast2D _rayCast;
+    bool _isOnLadder = false;
     public override void _PhysicsProcess(double delta)
     {
+        
         _velocity = Velocity;
 
-        // Gravity
-        if (!IsOnFloor())
+        _isOnLadder = _rayCast.IsColliding() && _rayCast.GetCollider() is TileMapLayer;
+
+        if (_isOnLadder)
         {
-            ApplyGravity(delta);
+            ApplyLadderMovement(delta);
         }
-        
-        // Jump
-        if (Input.IsActionPressed("jump") && IsOnFloor())
+        else
         {
-            ApplyJump();
-        }
+            // Gravity
+            if (!IsOnFloor())
+            {
+                ApplyGravity(delta);
+            }
         
+            // Jump
+            if (Input.IsActionPressed("jump") && IsOnFloor())
+            {
+                ApplyJump();
+            }
+        }
         
         // Movement
         float inputDirection = Input.GetAxis("move_left", "move_right");
         ApplyMovement(inputDirection, delta);
-        
+
         
         // Throw snowball
         if (Input.IsActionJustPressed("throw") && _canThrow)
@@ -95,6 +108,11 @@ public partial class Santa : CharacterBody2D
     private void UpdateAnimation()
     {
         if (!_canThrow) return;
+        if (_isOnLadder)
+        {
+            _animatedSprite.Play("idle"); // nie mam animacji do wchodzenia po drabinie
+            return;
+        }
         if (!IsOnFloor())
         {
             if (_velocity.Y < 0)
@@ -105,6 +123,7 @@ public partial class Santa : CharacterBody2D
             {
                 _animatedSprite.Play("jump_down");
             }
+            _animatedSprite.FlipH = _velocity.X < 0;
         }
         else
         {
@@ -120,5 +139,18 @@ public partial class Santa : CharacterBody2D
         }
         
         
+    }
+    
+    private void ApplyLadderMovement(double delta)
+    {
+        _velocity = Vector2.Zero;
+        if (Input.IsActionPressed("move_up"))
+        {
+            _velocity.Y = -Speed * (float)delta;
+        }
+        else if (Input.IsActionPressed("move_down"))
+        {
+            _velocity.Y = Speed * (float)delta;
+        }
     }
 }
