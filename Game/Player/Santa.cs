@@ -108,12 +108,8 @@ public partial class Santa : CharacterBody2D
     private void UpdateAnimation()
     {
         if (!_canThrow) return;
-        if (_isOnLadder)
-        {
-            _animatedSprite.Play("idle"); // nie mam animacji do wchodzenia po drabinie
-            return;
-        }
-        if (!IsOnFloor())
+
+        if (!IsOnFloor() && !_isOnLadder)
         {
             if (_velocity.Y < 0)
             {

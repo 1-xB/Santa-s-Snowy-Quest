@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://b0l4fi1ced4bm"]
 
-[ext_resource type="Texture2D" uid="uid://br0barlvcmebh" path="res://Assets/Other/snowball.png" id="1_jg2k6"]
+[ext_resource type="Texture2D" uid="uid://br0barlvcmebh" path="res://Assets/Snowball/snowball.png" id="1_jg2k6"]
 [ext_resource type="Script" path="res://Game/Snowball/Snowball.cs" id="1_wuqhy"]
-[ext_resource type="Texture2D" uid="uid://d1ejlxloj74jl" path="res://Assets/Other/snowball-destroy2.png" id="2_pbbj7"]
-[ext_resource type="Texture2D" uid="uid://da6kn4bl2g14w" path="res://Assets/Other/snowball-destroy3.png" id="3_iefwy"]
-[ext_resource type="Texture2D" uid="uid://bla5t7whdr0vy" path="res://Assets/Other/snowball-destroy4.png" id="4_i0g3n"]
+[ext_resource type="Texture2D" uid="uid://d1ejlxloj74jl" path="res://Assets/Snowball/snowball-destroy2.png" id="2_pbbj7"]
+[ext_resource type="Texture2D" uid="uid://da6kn4bl2g14w" path="res://Assets/Snowball/snowball-destroy3.png" id="3_iefwy"]
+[ext_resource type="Texture2D" uid="uid://bla5t7whdr0vy" path="res://Assets/Snowball/snowball-destroy4.png" id="4_i0g3n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fv7k8"]
 radius = 5.0
