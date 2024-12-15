@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://da6kn4bl2g14w"
-path="res://.godot/imported/snowball-destroy3.png-d903e0e151157b1536af3e5dba3cd9eb.ctex"
+path="res://.godot/imported/snowball-destroy3.png-9647392d8e33b52c2b05e81c61e6f3f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Other/snowball-destroy3.png"
-dest_files=["res://.godot/imported/snowball-destroy3.png-d903e0e151157b1536af3e5dba3cd9eb.ctex"]
+source_file="res://Assets/Snowball/snowball-destroy3.png"
+dest_files=["res://.godot/imported/snowball-destroy3.png-9647392d8e33b52c2b05e81c61e6f3f3.ctex"]
 
 [params]
 
