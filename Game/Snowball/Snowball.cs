@@ -31,6 +31,7 @@ public partial class Snowball : Area2D
     
     private void ApplyGravity(double delta)
     {
+        // Note : Ta grawitacja nie wygląda na zbyt realistycznie, można troche poprawić.
         _velocity.Y += _gravity * (float)delta;
     }
     

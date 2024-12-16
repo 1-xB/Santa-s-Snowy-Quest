@@ -7,58 +7,73 @@ public partial class Santa : CharacterBody2D
     [Export] AnimatedSprite2D _animatedSprite;
     
     
-    // Movement Variables
-    [Export] public float Speed = 200f;
-    [Export] public float Gravity = 500f;
-    [Export] public float JumpForce = 100f;
+    // Zmienne do poruszania się
+    [Export] public float Speed = 5000f;
+    [Export] public float Gravity = 1000f;
+    [Export] public float JumpForce = 300f;
     [Export] public float Friction = 800f;
     
-    // Snowball Variables
+    // Zmienna do rzucania śnieżką
     bool _canThrow = true;
 
     
-    // ledder variables
+    // Zmienna do drabiny
     [Export] RayCast2D _rayCast;
     bool _isOnLadder = false;
+    
+    // Wykrywanie lodu
+    [Export] RayCast2D _iceRayCast;
+    bool _isOnIce = false;
     public override void _PhysicsProcess(double delta)
     {
         
         _velocity = Velocity;
-
+        
+        IceDetect();
+        
+        // Raycast sprawdzający czy mikołaj jest na drabinie, jeśli tak to porusza się w górę i w dół (:
+        // Note : Raycast to jest takie coś jak promień, który sprawdza czy jest kolizja z jakimś obiektem 
+        
+        
+        // Dla Krologa : to nie chatgpt mi to zrobilo, obejżałem filmik na yt i zrobiłem to sam :D 
+        // https://www.youtube.com/watch?v=8F0jrZE-nEI
+        
         _isOnLadder = _rayCast.IsColliding() && _rayCast.GetCollider() is TileMapLayer;
-
+        
         if (_isOnLadder)
         {
             ApplyLadderMovement(delta);
         }
         else
         {
-            // Gravity
+            // Grawitacja
             if (!IsOnFloor())
             {
                 ApplyGravity(delta);
             }
         
-            // Jump
+            // Skok
             if (Input.IsActionPressed("jump") && IsOnFloor())
             {
                 ApplyJump();
             }
         }
         
-        // Movement
+        // Poruszanie się
         float inputDirection = Input.GetAxis("move_left", "move_right");
         ApplyMovement(inputDirection, delta);
 
         
-        // Throw snowball
+        // Rzucanie śnieżką
         if (Input.IsActionJustPressed("throw") && _canThrow)
         {
+            // Ogólnie to działa to tak że jeśli naciśniemy przycisk throw, to zmienia się animacja na throw
+            // i po zakończeniu animacji wywołuje się metoda OnAnimationFinished która tworzy śnieżkę i zmienia _canThrow na true
             _canThrow = false;
             _animatedSprite.Play("throw");
         }
         
-        // Update Animation
+        
         UpdateAnimation();
         
         
@@ -68,12 +83,29 @@ public partial class Santa : CharacterBody2D
         
     }
 
+    private void IceDetect()
+    {
+        _isOnIce = _iceRayCast.IsColliding() && _iceRayCast.GetCollider() is TileMapLayer;
+
+        if (_isOnIce)
+        {
+            Speed = 7500;
+            Friction = 100f;
+        }
+        else
+        {
+            Speed = 5000;
+            Friction = 800f;
+        }
+    }
+
     private void ThrowSnowball()
     {
 
         Snowball snowball = (Snowball)GD.Load<PackedScene>("res://Scenes/Snowball.tscn").Instantiate();
         GetTree().Root.AddChild(snowball);
         snowball.Position = Position;
+        // Zmiana kierunku śnieżki na kierunek, w którym patrzy mikołaj. 
         if (_animatedSprite.FlipH) snowball.Speed = -snowball.Speed;
         _canThrow = true;
     }
