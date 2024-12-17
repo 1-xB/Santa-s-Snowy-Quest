@@ -792,5 +792,10 @@ position = Vector2(452, 132)
 zoom = Vector2(2.2, 2.2)
 
 [node name="WrongElf" parent="." instance=ExtResource("9_4x3kj")]
-position = Vector2(281, 110)
-scale = Vector2(0.6, 0.6)
+position = Vector2(294, 106)
+
+[node name="WrongElf2" parent="." instance=ExtResource("9_4x3kj")]
+position = Vector2(319, -23)
+
+[node name="WrongElf3" parent="." instance=ExtResource("9_4x3kj")]
+position = Vector2(499, 12)
