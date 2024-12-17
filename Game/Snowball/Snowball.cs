@@ -9,6 +9,7 @@ public partial class Snowball : Area2D
     public float Speed = 20000f;
     float _gravity = 200f; 
     bool destroy = false;
+    bool first = true;
     
 
     public override void _PhysicsProcess(double delta)
@@ -42,8 +43,9 @@ public partial class Snowball : Area2D
     
     private void OnCollisionBodyEntered(Node2D body)
     {
-        if (body is Santa)
+        if (first)
         {
+            first = false;
             return;
         }
         destroy = true;

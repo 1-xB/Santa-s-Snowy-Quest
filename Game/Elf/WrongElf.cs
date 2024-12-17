@@ -18,19 +18,25 @@ public partial class WrongElf : CharacterBody2D
     
     float _speed = 50f;
     
+    [Export] Timer _throwTimer;
     bool _isAttacking = false;
+    bool canThrow = true;
 
     public override void _PhysicsProcess(double delta)
     {
         _velocity = Velocity;
         
+        
         MovingOnPlatform();
-
+        ThrowSnowball();
+        
+        
         Velocity = _velocity;
         MoveAndSlide();
         
         base._PhysicsProcess(delta);
     }
+    
 
     private void MovingOnPlatform()
     {
@@ -59,11 +65,59 @@ public partial class WrongElf : CharacterBody2D
             _isMovingRight = !_isMovingRight;
         }
         
-        // TODO : Zaimplementować atak elfa
     }
-
-    private void ApplyMovement(double delta)
+    
+    private void ThrowSnowball()
     {
-        _velocity.X = _speed * (float)delta;
+        if (_isAttacking && canThrow)
+        {
+            Snowball snowball = (Snowball)GD.Load<PackedScene>("res://Scenes/Snowball.tscn").Instantiate();
+            GetTree().Root.AddChild(snowball);
+            snowball.Position = Position;
+            if (!_isMovingRight) snowball.Speed = -snowball.Speed;
+            canThrow = false;
+            _throwTimer.Start();
+        }
+    }
+    
+    private void _on_LeftVision_body_entered(Node2D body)
+    {
+        GD.Print("LeftVision body entered");
+        if (body is Santa player)
+        {
+            _isAttacking = true;
+        }
+    }
+    
+    private void _on_LeftVision_body_exited(Node2D body)
+    {
+        GD.Print("LeftVision body exited");
+        if (body is Santa player)
+        {
+            _isAttacking = false;
+        }
+    }
+    
+    private void _on_RightVision_body_entered(Node2D body)
+    {
+        GD.Print("RightVision body entered");
+        if (body is Santa player)
+        {
+            _isAttacking = true;
+        }
+    }
+    
+    private void _on_RightVision_body_exited(Node2D body)
+    {
+        GD.Print("RightVision body exited");
+        if (body is Santa player)
+        {
+            _isAttacking = false;
+        }
+    }
+    
+    private void _on_ThrowTimer_timeout()
+    {
+        canThrow = true;
     }
 }
