@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://dlat6v0of8h2"]
+[gd_scene load_steps=19 format=4 uid="uid://dlat6v0of8h2"]
 
 [ext_resource type="Texture2D" uid="uid://dsxhoyn1heme6" path="res://Assets/Tiles/Tileset.png" id="1_hekee"]
 [ext_resource type="PackedScene" uid="uid://cygcs8uq2nios" path="res://Scenes/Santa.tscn" id="2_n1mly"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c5l2ly7ty85ga" path="res://Assets/Tiles/4.png" id="5_vky2f"]
 [ext_resource type="Texture2D" uid="uid://b2sy2ydbb2xbh" path="res://Assets/Tiles/5.png" id="6_kkjin"]
 [ext_resource type="Texture2D" uid="uid://bced27miplnoh" path="res://Assets/Tiles/6.png" id="7_y76e8"]
+[ext_resource type="PackedScene" uid="uid://cvbdlh5rkg2la" path="res://Scenes/wrong_elf.tscn" id="9_4x3kj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30jks"]
 texture = ExtResource("1_hekee")
@@ -789,3 +790,7 @@ position = Vector2(55, 160)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(452, 132)
 zoom = Vector2(2.2, 2.2)
+
+[node name="WrongElf" parent="." instance=ExtResource("9_4x3kj")]
+position = Vector2(281, 110)
+scale = Vector2(0.6, 0.6)
