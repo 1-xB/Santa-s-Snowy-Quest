@@ -18,12 +18,14 @@ public partial class WrongElf : CharacterBody2D
     
     // Poruszanie się
     Vector2 _velocity = Vector2.Zero;
-    float _speed = 50f;
+    [Export] Timer _moveTimer;
+    bool _canMove = true;
+    float _speed = 30f;
     
     // Rzucanie śnieżką
     [Export] Timer _throwTimer;
     bool _isAttacking = false;
-    bool canThrow = false;
+    bool _canThrow = false;
 
     // Życie
     float _health = 3;
@@ -49,7 +51,7 @@ public partial class WrongElf : CharacterBody2D
 
     private void MovingOnPlatform()
     {
-        if (_isAttacking)
+        if (_isAttacking || !_canMove)
         {
             _velocity.X = 0;
             return;
@@ -82,13 +84,14 @@ public partial class WrongElf : CharacterBody2D
     
     private void ThrowSnowball()
     {
-        if (_isAttacking && canThrow)
+        if (_isAttacking && _canThrow)
         {
             Snowball snowball = (Snowball)GD.Load<PackedScene>("res://Scenes/Snowball.tscn").Instantiate();
             GetTree().Root.AddChild(snowball);
             snowball.Position = Position;
             if (!_isMovingRight) snowball.Speed = -snowball.Speed;
-            canThrow = false;
+            snowball.SetOwner(this); // Ustawianie własciciela na siebie, by nie dostać obrażeń bo śniezka respi się w elfie i od razu go trafia.
+            _canThrow = false;
             _throwTimer.Start();
         }
     }
@@ -102,48 +105,59 @@ public partial class WrongElf : CharacterBody2D
         }
     }
     
+    
     private void _on_LeftVision_body_entered(Node2D body)
     {
         if (body is Santa player)
         {
             _isAttacking = true;
-            canThrow = false;
-            _throwTimer.Start(); // zabezpieczenie, żeby elf nie rzucał od razu po wejściu w zasięg gracza.
+            _canThrow = false;
+            _moveTimer.Stop(); // Stop the movement timer when the player is seen
+            _throwTimer.Start(); // Start the throw timer to shoot after a delay
         }
     }
-    
+
     private void _on_LeftVision_body_exited(Node2D body)
     {
         if (body is Santa player)
         {
             _isAttacking = false;
-            canThrow = false;
-        }; 
+            _canThrow = false;
+            _canMove = false;
+            _moveTimer.Start(); // Start the movement timer to resume moving after a delay
+        }
     }
-    
+
     private void _on_RightVision_body_entered(Node2D body)
     {
         if (body is Santa player)
         {
             _isAttacking = true;
-            canThrow = false;
-            _throwTimer.Start(); // zabezpieczenie, żeby elf nie rzucał od razu po wejściu w zasięg gracza.
+            _canThrow = false;
+            _moveTimer.Stop(); // Stop the movement timer when the player is seen
+            _throwTimer.Start(); // Start the throw timer to shoot after a delay
         }
     }
-    
+
     private void _on_RightVision_body_exited(Node2D body)
     {
         if (body is Santa player)
         {
             _isAttacking = false;
-            canThrow = false;
-            
+            _canThrow = false;
+            _canMove = false;
+            _moveTimer.Start(); // Start the movement timer to resume moving after a delay
         }
     }
-    
+
     private void _on_ThrowTimer_timeout()
     {
-        canThrow = true;
+        _canThrow = true;
+    }
+
+    private void _on_MoveTimer_timeout()
+    {
+        _canMove = true;
     }
     
     public void TakeDamage()

@@ -112,6 +112,7 @@ public partial class Santa : CharacterBody2D
         snowball.Position = Position;
         // Zmiana kierunku śnieżki na kierunek, w którym patrzy mikołaj. 
         if (_animatedSprite.FlipH) snowball.Speed = -snowball.Speed;
+        snowball.SetOwner(this); // Ustawianie własciciela na siebie, by nie dostać obrażeń bo śniezka respi się w mikolaju i od razu go trafia.
         _canThrow = true;
     }
     
@@ -160,22 +161,24 @@ public partial class Santa : CharacterBody2D
             {
                 _animatedSprite.Play("jump_down");
             }
-            _animatedSprite.FlipH = _velocity.X < 0;
         }
         else
         {
             if (_velocity.X != 0)
             {
                 _animatedSprite.Play("run");
-                _animatedSprite.FlipH = _velocity.X < 0;
             }
             else
             {
                 _animatedSprite.Play("idle");
             }
         }
-        
-        
+
+        // Flip the sprite only when moving horizontally
+        if (_velocity.X != 0)
+        {
+            _animatedSprite.FlipH = _velocity.X < 0;
+        }
     }
     
     private void ApplyLadderMovement(double delta)
