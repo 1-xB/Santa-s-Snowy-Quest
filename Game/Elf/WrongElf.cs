@@ -3,25 +3,33 @@ using System;
 
 public partial class WrongElf : CharacterBody2D
 {
+    // Wykrywanie kolizji z dołu
     [Export] private Area2D _leftArea2D;
     [Export] private Area2D _rightArea2D;
-
+    bool _isMovingRight = true;
+    
+    // Wykrywanie gracza
     [Export] private Area2D _leftVision;
     [Export] private Area2D _rightVision;
     
     bool _isLeftColliding = false;
     bool _isRightColliding = false;
     
-    bool _isMovingRight = true;
     
+    // Poruszanie się
     Vector2 _velocity = Vector2.Zero;
-    
     float _speed = 50f;
     
+    // Rzucanie śnieżką
     [Export] Timer _throwTimer;
     bool _isAttacking = false;
-    bool canThrow = true;
+    bool canThrow = false;
 
+    // Życie
+    float _health = 3;
+    
+    // Animacja
+    [Export] AnimatedSprite2D _animatedSprite;
     public override void _PhysicsProcess(double delta)
     {
         _velocity = Velocity;
@@ -29,6 +37,7 @@ public partial class WrongElf : CharacterBody2D
         
         MovingOnPlatform();
         ThrowSnowball();
+        AnimationHandler();
         
         
         Velocity = _velocity;
@@ -40,7 +49,11 @@ public partial class WrongElf : CharacterBody2D
 
     private void MovingOnPlatform()
     {
-        if (_isAttacking) return;
+        if (_isAttacking)
+        {
+            _velocity.X = 0;
+            return;
+        };
 
         // Note : .GetOverlappingBodies() zwraca listę obiektów,
         // które kolidują z danym obszarem (czyli tutaj z tilemapą)
@@ -79,45 +92,66 @@ public partial class WrongElf : CharacterBody2D
             _throwTimer.Start();
         }
     }
+
+    private void AnimationHandler()
+    {
+        if (_velocity.X != 0)
+        {
+            _animatedSprite.Play("walk");
+            _animatedSprite.FlipH = _velocity.X < 0;
+        }
+    }
     
     private void _on_LeftVision_body_entered(Node2D body)
     {
-        GD.Print("LeftVision body entered");
         if (body is Santa player)
         {
             _isAttacking = true;
+            canThrow = false;
+            _throwTimer.Start(); // zabezpieczenie, żeby elf nie rzucał od razu po wejściu w zasięg gracza.
         }
     }
     
     private void _on_LeftVision_body_exited(Node2D body)
     {
-        GD.Print("LeftVision body exited");
         if (body is Santa player)
         {
             _isAttacking = false;
-        }
+            canThrow = false;
+        }; 
     }
     
     private void _on_RightVision_body_entered(Node2D body)
     {
-        GD.Print("RightVision body entered");
         if (body is Santa player)
         {
             _isAttacking = true;
+            canThrow = false;
+            _throwTimer.Start(); // zabezpieczenie, żeby elf nie rzucał od razu po wejściu w zasięg gracza.
         }
     }
     
     private void _on_RightVision_body_exited(Node2D body)
     {
-        GD.Print("RightVision body exited");
         if (body is Santa player)
         {
             _isAttacking = false;
+            canThrow = false;
+            
         }
     }
     
     private void _on_ThrowTimer_timeout()
     {
         canThrow = true;
+    }
+    
+    public void TakeDamage()
+    {
+        _health--;
+        if (_health <= 0)
+        {
+            QueueFree();
+        }
     }
 }

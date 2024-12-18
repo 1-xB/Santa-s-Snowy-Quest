@@ -15,7 +15,6 @@ public partial class Snowball : Area2D
     public override void _PhysicsProcess(double delta)
     {
         
-
         if (!destroy)
         {
             _velocity = Vector2.Zero;
@@ -25,8 +24,6 @@ public partial class Snowball : Area2D
         
             Position += _velocity * (float)delta;
         }
-        
-        
         
     }
     
@@ -47,6 +44,16 @@ public partial class Snowball : Area2D
         {
             first = false;
             return;
+        }
+        if (body is Santa)
+        {
+            Santa santa = body as Santa;
+            santa.TakeDamage();
+        }
+        else if (body is WrongElf)
+        {
+            WrongElf elf = body as WrongElf;
+            elf.TakeDamage();
         }
         destroy = true;
         _animatedSprite.Play("destroy");
