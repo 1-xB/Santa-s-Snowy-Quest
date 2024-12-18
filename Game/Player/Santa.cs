@@ -24,6 +24,11 @@ public partial class Santa : CharacterBody2D
     // Wykrywanie lodu
     [Export] RayCast2D _iceRayCast;
     bool _isOnIce = false;
+    
+    // Życie 
+    [Export] public int Health = 3;
+    bool _isHitted = false;
+    
     public override void _PhysicsProcess(double delta)
     {
         
@@ -65,7 +70,7 @@ public partial class Santa : CharacterBody2D
 
         
         // Rzucanie śnieżką
-        if (Input.IsActionJustPressed("throw") && _canThrow)
+        if (Input.IsActionJustPressed("throw") && _canThrow && !_isHitted)
         {
             // Ogólnie to działa to tak że jeśli naciśniemy przycisk throw, to zmienia się animacja na throw
             // i po zakończeniu animacji wywołuje się metoda OnAnimationFinished która tworzy śnieżkę i zmienia _canThrow na true
@@ -116,9 +121,12 @@ public partial class Santa : CharacterBody2D
         {
             ThrowSnowball();
         }
+        if (_animatedSprite.Animation == "hit")
+        {
+            _isHitted = false;
+        }
     }
-
-
+    
     private void ApplyJump()
     {
         _velocity.Y = -JumpForce;
@@ -140,6 +148,7 @@ public partial class Santa : CharacterBody2D
     private void UpdateAnimation()
     {
         if (!_canThrow) return;
+        if (_isHitted) return;
 
         if (!IsOnFloor() && !_isOnLadder)
         {
@@ -180,5 +189,18 @@ public partial class Santa : CharacterBody2D
         {
             _velocity.Y = Speed * (float)delta;
         }
+    }
+    
+    public void TakeDamage()
+    {
+        Health--;
+        if (Health <= 0)
+        {
+            QueueFree();
+        }
+        _isHitted = true;
+        _canThrow = true; // bez tego występował błąd, że jak mikolaj dostanie obrażenia to nie może rzucać śnieżkami, i nie zmienia się animacja.
+        _animatedSprite.Play("hit");
+        
     }
 }
