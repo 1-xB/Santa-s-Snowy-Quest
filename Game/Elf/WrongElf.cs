@@ -112,8 +112,8 @@ public partial class WrongElf : CharacterBody2D
         {
             _isAttacking = true;
             _canThrow = false;
-            _moveTimer.Stop(); // Stop the movement timer when the player is seen
-            _throwTimer.Start(); // Start the throw timer to shoot after a delay
+            _moveTimer.Stop(); 
+            _throwTimer.Start(); 
         }
     }
 
@@ -124,7 +124,7 @@ public partial class WrongElf : CharacterBody2D
             _isAttacking = false;
             _canThrow = false;
             _canMove = false;
-            _moveTimer.Start(); // Start the movement timer to resume moving after a delay
+            _moveTimer.Start(); 
         }
     }
 
@@ -134,8 +134,8 @@ public partial class WrongElf : CharacterBody2D
         {
             _isAttacking = true;
             _canThrow = false;
-            _moveTimer.Stop(); // Stop the movement timer when the player is seen
-            _throwTimer.Start(); // Start the throw timer to shoot after a delay
+            _moveTimer.Stop(); 
+            _throwTimer.Start(); 
         }
     }
 
@@ -146,7 +146,7 @@ public partial class WrongElf : CharacterBody2D
             _isAttacking = false;
             _canThrow = false;
             _canMove = false;
-            _moveTimer.Start(); // Start the movement timer to resume moving after a delay
+            _moveTimer.Start(); 
         }
     }
 
