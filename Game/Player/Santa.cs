@@ -173,8 +173,7 @@ public partial class Santa : CharacterBody2D
                 _animatedSprite.Play("idle");
             }
         }
-
-        // Flip the sprite only when moving horizontally
+        
         if (_velocity.X != 0)
         {
             _animatedSprite.FlipH = _velocity.X < 0;
