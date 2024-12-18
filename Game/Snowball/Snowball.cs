@@ -9,7 +9,8 @@ public partial class Snowball : Area2D
     public float Speed = 20000f;
     float _gravity = 200f; 
     bool destroy = false;
-    bool first = true;
+
+    private Node2D _owner;
     
 
     public override void _PhysicsProcess(double delta)
@@ -40,21 +41,23 @@ public partial class Snowball : Area2D
     
     private void OnCollisionBodyEntered(Node2D body)
     {
-        if (first)
+        if (body == _owner)
         {
-            first = false;
             return;
         }
+        
         if (body is Santa)
         {
             Santa santa = body as Santa;
             santa.TakeDamage();
         }
+        
         else if (body is WrongElf)
         {
             WrongElf elf = body as WrongElf;
             elf.TakeDamage();
         }
+        
         destroy = true;
         _animatedSprite.Play("destroy");
         
@@ -67,6 +70,13 @@ public partial class Snowball : Area2D
             QueueFree();
         }
     }
+    
+    public void SetOwner(Node2D owner)
+    {
+        _owner = owner;
+    }
+    
+    
     
 
 }
