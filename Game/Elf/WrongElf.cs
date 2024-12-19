@@ -7,21 +7,20 @@ public partial class WrongElf : CharacterBody2D
     [Export] private Area2D _leftArea2D;
     [Export] private Area2D _rightArea2D;
     bool _isMovingRight = true;
-    
+
     // Wykrywanie gracza
     [Export] private Area2D _leftVision;
     [Export] private Area2D _rightVision;
-    
+
     bool _isLeftColliding = false;
     bool _isRightColliding = false;
-    
-    
+
     // Poruszanie się
     Vector2 _velocity = Vector2.Zero;
     [Export] Timer _moveTimer;
     bool _canMove = true;
     float _speed = 30f;
-    
+
     // Rzucanie śnieżką
     [Export] Timer _throwTimer;
     bool _isAttacking = false;
@@ -35,19 +34,17 @@ public partial class WrongElf : CharacterBody2D
     public override void _PhysicsProcess(double delta)
     {
         _velocity = Velocity;
-        
-        
+
         MovingOnPlatform();
         ThrowSnowball();
         AnimationHandler();
-        
-        
+
+        _velocity.Y = 0;
         Velocity = _velocity;
         MoveAndSlide();
-        
+
         base._PhysicsProcess(delta);
     }
-    
 
     private void MovingOnPlatform()
     {
@@ -56,13 +53,8 @@ public partial class WrongElf : CharacterBody2D
             _velocity.X = 0;
             return;
         };
-
-        // Note : .GetOverlappingBodies() zwraca listę obiektów,
-        // które kolidują z danym obszarem (czyli tutaj z tilemapą)
-        _isLeftColliding = _leftArea2D.GetOverlappingBodies().Count > 0;
-        _isRightColliding = _rightArea2D.GetOverlappingBodies().Count > 0;
         
-        // Działa to tak, że jeśli elf jest w ruchu w prawo i kolizja z prawą ścianą to idź w prawo.
+
         if (_isMovingRight && _isRightColliding)
         {
             _velocity.X = _speed;
@@ -75,13 +67,12 @@ public partial class WrongElf : CharacterBody2D
             _leftVision.Monitoring = true;
             _rightVision.Monitoring = false;
         }
-        else if (!_isRightColliding || !_isLeftColliding) // Jeśli brak kolizji to zmienia kierunek
+        else if (!_isRightColliding || !_isLeftColliding)
         {
             _isMovingRight = !_isMovingRight;
         }
-        
     }
-    
+
     private void ThrowSnowball()
     {
         if (_isAttacking && _canThrow)
@@ -90,7 +81,7 @@ public partial class WrongElf : CharacterBody2D
             GetTree().Root.AddChild(snowball);
             snowball.Position = Position;
             if (!_isMovingRight) snowball.Speed = -snowball.Speed;
-            snowball.SetOwner(this); // Ustawianie własciciela na siebie, by nie dostać obrażeń bo śniezka respi się w elfie i od razu go trafia.
+            snowball.SetOwner(this);
             _canThrow = false;
             _throwTimer.Start();
         }
@@ -104,16 +95,15 @@ public partial class WrongElf : CharacterBody2D
             _animatedSprite.FlipH = _velocity.X < 0;
         }
     }
-    
-    
+
     private void _on_LeftVision_body_entered(Node2D body)
     {
-        if (body is Santa player)
+        if (body is Santa player && player.Position.Y < Position.Y)
         {
             _isAttacking = true;
             _canThrow = false;
-            _moveTimer.Stop(); 
-            _throwTimer.Start(); 
+            _moveTimer.Stop();
+            _throwTimer.Start();
         }
     }
 
@@ -124,18 +114,18 @@ public partial class WrongElf : CharacterBody2D
             _isAttacking = false;
             _canThrow = false;
             _canMove = false;
-            _moveTimer.Start(); 
+            _moveTimer.Start();
         }
     }
 
     private void _on_RightVision_body_entered(Node2D body)
     {
-        if (body is Santa player)
+        if (body is Santa player && player.Position.Y < Position.Y)
         {
             _isAttacking = true;
             _canThrow = false;
-            _moveTimer.Stop(); 
-            _throwTimer.Start(); 
+            _moveTimer.Stop();
+            _throwTimer.Start();
         }
     }
 
@@ -146,7 +136,7 @@ public partial class WrongElf : CharacterBody2D
             _isAttacking = false;
             _canThrow = false;
             _canMove = false;
-            _moveTimer.Start(); 
+            _moveTimer.Start();
         }
     }
 
@@ -159,13 +149,45 @@ public partial class WrongElf : CharacterBody2D
     {
         _canMove = true;
     }
-    
+
     public void TakeDamage()
     {
         _health--;
         if (_health <= 0)
         {
             QueueFree();
+        }
+    }
+    
+    private void _on_LeftArea2D_body_entered(Node body)
+    {
+        if (body is TileMapLayer)
+        {
+            _isLeftColliding = true;
+        }
+    }
+    
+    private void _on_LeftArea2D_body_exited(Node body)
+    {
+        if (body is TileMapLayer)
+        {
+            _isLeftColliding = false;
+        }
+    }
+    
+    private void _on_RightArea2D_body_entered(Node body)
+    {
+        if (body is TileMapLayer)
+        {
+            _isRightColliding = true;
+        }
+    }
+    
+    private void _on_RightArea2D_body_exited(Node body)
+    {
+        if (body is TileMapLayer)
+        {
+            _isRightColliding = false;
         }
     }
 }
