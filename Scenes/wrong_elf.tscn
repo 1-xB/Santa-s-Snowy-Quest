@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cvbdlh5rkg2la"]
+[gd_scene load_steps=14 format=3 uid="uid://c7fp3o2mdmqcm"]
 
 [ext_resource type="Texture2D" uid="uid://b806hu0w3tte" path="res://Assets/WrongElfs/1elf-idle.png" id="1_3igle"]
 [ext_resource type="Script" path="res://Game/Elf/WrongElf.cs" id="1_ofvmu"]
@@ -69,11 +69,9 @@ size = Vector2(99.4584, 5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jbo6"]
 size = Vector2(14.0417, 4.00002)
 
-[node name="WrongElf" type="CharacterBody2D" node_paths=PackedStringArray("_leftArea2D", "_rightArea2D", "_leftVision", "_rightVision", "_moveTimer", "_throwTimer", "_animatedSprite")]
+[node name="WrongElf" type="CharacterBody2D" node_paths=PackedStringArray("_leftVision", "_rightVision", "_moveTimer", "_throwTimer", "_animatedSprite")]
 scale = Vector2(0.6, 0.6)
 script = ExtResource("1_ofvmu")
-_leftArea2D = NodePath("Left Collider")
-_rightArea2D = NodePath("Right Collider")
 _leftVision = NodePath("Left Vision")
 _rightVision = NodePath("Right Vision")
 _moveTimer = NodePath("MoveTimer")

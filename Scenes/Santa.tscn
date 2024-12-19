@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cygcs8uq2nios"]
+[gd_scene load_steps=41 format=3 uid="uid://d3wur7bfjhr3s"]
 
 [ext_resource type="Script" path="res://Game/Player/Santa.cs" id="1_6gvql"]
 [ext_resource type="Texture2D" uid="uid://dv8ok37yd14q" path="res://Assets/Player/hit_sheet.png" id="1_y8iar"]
