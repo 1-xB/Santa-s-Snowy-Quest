@@ -1,15 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj7d265xack7o"]
+[gd_scene load_steps=5 format=3 uid="uid://bff3l12owuuta"]
 
 [ext_resource type="Texture2D" uid="uid://8fnke6ra6nlu" path="res://Assets/Boxes/2.png" id="1_bm4l0"]
 [ext_resource type="Script" path="res://Game/Boxes/Box.cs" id="1_j6t67"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75miy"]
-size = Vector2(34, 25)
+size = Vector2(30, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_71w53"]
-size = Vector2(8.5, 13)
+size = Vector2(2.25, 21)
 
-[node name="box" type="CharacterBody2D"]
+[node name="Box" type="CharacterBody2D"]
 script = ExtResource("1_j6t67")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -23,13 +23,13 @@ shape = SubResource("RectangleShape2D_75miy")
 [node name="Left Santa Detector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left Santa Detector"]
-position = Vector2(-13, 2)
+position = Vector2(-14.125, 2)
 shape = SubResource("RectangleShape2D_71w53")
 
 [node name="Right Santa Detector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right Santa Detector"]
-position = Vector2(14.75, 2)
+position = Vector2(16, 1.5)
 shape = SubResource("RectangleShape2D_71w53")
 
 [connection signal="body_entered" from="Left Santa Detector" to="." method="OnLeftPushArea2DBodyEntered"]

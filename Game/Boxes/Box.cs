@@ -2,7 +2,6 @@ using Godot;
 
 public partial class Box : CharacterBody2D
 {
-    [Export]
     public float PushForce = 1000f;
     private bool _isPushed = false;
     private float _pushDirection = 0;
