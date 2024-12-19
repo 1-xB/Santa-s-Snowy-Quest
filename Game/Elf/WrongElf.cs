@@ -3,9 +3,6 @@ using System;
 
 public partial class WrongElf : CharacterBody2D
 {
-    // Wykrywanie kolizji z dołu
-    [Export] private Area2D _leftArea2D;
-    [Export] private Area2D _rightArea2D;
     bool _isMovingRight = true;
 
     // Wykrywanie gracza
@@ -31,6 +28,8 @@ public partial class WrongElf : CharacterBody2D
     
     // Animacja
     [Export] AnimatedSprite2D _animatedSprite;
+    
+    
     public override void _PhysicsProcess(double delta)
     {
         _velocity = Velocity;
@@ -53,7 +52,6 @@ public partial class WrongElf : CharacterBody2D
             _velocity.X = 0;
             return;
         };
-        
 
         if (_isMovingRight && _isRightColliding)
         {
@@ -98,7 +96,7 @@ public partial class WrongElf : CharacterBody2D
 
     private void _on_LeftVision_body_entered(Node2D body)
     {
-        if (body is Santa player && player.Position.Y < Position.Y)
+        if (body is Santa player)
         {
             _isAttacking = true;
             _canThrow = false;
@@ -120,7 +118,7 @@ public partial class WrongElf : CharacterBody2D
 
     private void _on_RightVision_body_entered(Node2D body)
     {
-        if (body is Santa player && player.Position.Y < Position.Y)
+        if (body is Santa player)
         {
             _isAttacking = true;
             _canThrow = false;
