@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bff3l12owuuta"]
+[gd_scene load_steps=5 format=3 uid="uid://c884lsanhq4nn"]
 
 [ext_resource type="Texture2D" uid="uid://8fnke6ra6nlu" path="res://Assets/Boxes/2.png" id="1_bm4l0"]
 [ext_resource type="Script" path="res://Game/Boxes/Box.cs" id="1_j6t67"]

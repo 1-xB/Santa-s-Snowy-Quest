@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0l4fi1ced4bm"]
+[gd_scene load_steps=9 format=3 uid="uid://bvu6yftb7x5rd"]
 
 [ext_resource type="Texture2D" uid="uid://br0barlvcmebh" path="res://Assets/Snowball/snowball.png" id="1_jg2k6"]
 [ext_resource type="Script" path="res://Game/Snowball/Snowball.cs" id="1_wuqhy"]
