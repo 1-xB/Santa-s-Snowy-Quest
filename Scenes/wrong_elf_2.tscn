@@ -1,41 +1,41 @@
-[gd_scene load_steps=14 format=3 uid="uid://cvbdlh5rkg2la"]
+[gd_scene load_steps=14 format=3 uid="uid://cpd722fp2pcfe"]
 
-[ext_resource type="Texture2D" uid="uid://b806hu0w3tte" path="res://Assets/WrongElfs/1elf-idle.png" id="1_3igle"]
-[ext_resource type="Script" path="res://Game/Elf/WrongElf.cs" id="1_ofvmu"]
-[ext_resource type="Texture2D" uid="uid://cfsgmo26hinaw" path="res://Assets/WrongElfs/1elf-walk.png" id="3_tos4e"]
+[ext_resource type="Script" path="res://Game/Elf/WrongElf.cs" id="1_olotx"]
+[ext_resource type="Texture2D" uid="uid://545mdv5ypdwi" path="res://Assets/WrongElfs/2elf-idle.png" id="2_vfjuv"]
+[ext_resource type="Texture2D" uid="uid://pgxd58no6b6q" path="res://Assets/WrongElfs/2elf-walk.png" id="3_6m4rw"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bh7va"]
-atlas = ExtResource("1_3igle")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xa4d"]
+atlas = ExtResource("2_vfjuv")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tmnjm"]
-atlas = ExtResource("1_3igle")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hf8vq"]
+atlas = ExtResource("2_vfjuv")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iovf5"]
-atlas = ExtResource("3_tos4e")
+[sub_resource type="AtlasTexture" id="AtlasTexture_af4gl"]
+atlas = ExtResource("3_6m4rw")
 region = Rect2(0, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_filnf"]
-atlas = ExtResource("3_tos4e")
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3rvw"]
+atlas = ExtResource("3_6m4rw")
 region = Rect2(64, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wurfn"]
-atlas = ExtResource("3_tos4e")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ovsn"]
+atlas = ExtResource("3_6m4rw")
 region = Rect2(128, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ptoj"]
-atlas = ExtResource("3_tos4e")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hitqt"]
+atlas = ExtResource("3_6m4rw")
 region = Rect2(192, 64, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vnytj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bh7va")
+"texture": SubResource("AtlasTexture_8xa4d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tmnjm")
+"texture": SubResource("AtlasTexture_hf8vq")
 }],
 "loop": true,
 "name": &"idle",
@@ -43,16 +43,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iovf5")
+"texture": SubResource("AtlasTexture_af4gl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_filnf")
+"texture": SubResource("AtlasTexture_b3rvw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wurfn")
+"texture": SubResource("AtlasTexture_2ovsn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2ptoj")
+"texture": SubResource("AtlasTexture_hitqt")
 }],
 "loop": true,
 "name": &"walk",
@@ -67,11 +67,11 @@ height = 44.0
 size = Vector2(124.5, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jbo6"]
-size = Vector2(14.0417, 4.00002)
+size = Vector2(20.3542, 15.6667)
 
 [node name="WrongElf" type="CharacterBody2D" node_paths=PackedStringArray("_leftArea2D", "_rightArea2D", "_leftVision", "_rightVision", "_moveTimer", "_throwTimer", "_animatedSprite")]
 scale = Vector2(0.6, 0.6)
-script = ExtResource("1_ofvmu")
+script = ExtResource("1_olotx")
 _leftArea2D = NodePath("Left Collider")
 _rightArea2D = NodePath("Right Collider")
 _leftVision = NodePath("Left Vision")
@@ -105,13 +105,13 @@ shape = SubResource("RectangleShape2D_8wdh8")
 [node name="Left Collider" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left Collider"]
-position = Vector2(-8.33333, 33.3333)
+position = Vector2(-18.1563, 27.1667)
 shape = SubResource("RectangleShape2D_5jbo6")
 
 [node name="Right Collider" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right Collider"]
-position = Vector2(8.33333, 33.3333)
+position = Vector2(20, 26.6667)
 shape = SubResource("RectangleShape2D_5jbo6")
 
 [node name="ThrowTimer" type="Timer" parent="."]

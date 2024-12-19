@@ -29,6 +29,9 @@ public partial class Santa : CharacterBody2D
     [Export] public int Health = 3;
     bool _isHitted = false;
     
+    // Poruszanie boxem
+    bool _isPushed = false;
+    
     public override void _PhysicsProcess(double delta)
     {
         
@@ -77,7 +80,6 @@ public partial class Santa : CharacterBody2D
             _canThrow = false;
             _animatedSprite.Play("throw");
         }
-        
         
         UpdateAnimation();
         
@@ -164,7 +166,11 @@ public partial class Santa : CharacterBody2D
         }
         else
         {
-            if (_velocity.X != 0)
+            if (_isPushed)
+            {
+                _animatedSprite.Play("push");
+            }
+            else if (_velocity.X != 0)
             {
                 _animatedSprite.Play("run");
             }
@@ -173,7 +179,7 @@ public partial class Santa : CharacterBody2D
                 _animatedSprite.Play("idle");
             }
         }
-        
+    
         if (_velocity.X != 0)
         {
             _animatedSprite.FlipH = _velocity.X < 0;
@@ -205,4 +211,15 @@ public partial class Santa : CharacterBody2D
         _animatedSprite.Play("hit");
         
     }
+    
+    public void EnterBox()
+    {
+        _isPushed = true;
+    }
+    
+    public void ExitBox()
+    {
+        _isPushed = false;
+    }
+    
 }

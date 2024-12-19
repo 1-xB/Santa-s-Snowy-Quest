@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://dymr2decvrf80"]
+
+[ext_resource type="Texture2D" uid="uid://xk2ne28s5ope" path="res://Assets/Coin/Coin.png" id="1_qkx1n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyxyo"]
+atlas = ExtResource("1_qkx1n")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pmj1"]
+atlas = ExtResource("1_qkx1n")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b45ud"]
+atlas = ExtResource("1_qkx1n")
+region = Rect2(20, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jey2h"]
+atlas = ExtResource("1_qkx1n")
+region = Rect2(30, 0, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xoeoi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyxyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pmj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b45ud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jey2h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjrgw"]
+size = Vector2(7.25, 8.5)
+
+[node name="Coin" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_xoeoi")
+autoplay = "default"
+frame_progress = 0.293335
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.625, 0)
+shape = SubResource("RectangleShape2D_jjrgw")

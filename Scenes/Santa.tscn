@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cygcs8uq2nios"]
+[gd_scene load_steps=41 format=3 uid="uid://cygcs8uq2nios"]
 
 [ext_resource type="Script" path="res://Game/Player/Santa.cs" id="1_6gvql"]
 [ext_resource type="Texture2D" uid="uid://dv8ok37yd14q" path="res://Assets/Player/hit_sheet.png" id="1_y8iar"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://crs1cbmtcxvh0" path="res://Assets/Player/throw_sheet.png" id="4_07124"]
 [ext_resource type="Texture2D" uid="uid://ckw77rp8vmael" path="res://Assets/Player/jump/jump_down_sheet.png" id="4_s6sla"]
 [ext_resource type="Texture2D" uid="uid://0x2qf1214k0y" path="res://Assets/Player/jump/jump_up_sheet.png" id="5_6yysx"]
+[ext_resource type="Texture2D" uid="uid://dw3kbd3nriqrb" path="res://Assets/Player/push_sheet.png" id="6_hpt6b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rqh0g"]
 atlas = ExtResource("1_y8iar")
@@ -59,6 +60,26 @@ region = Rect2(0, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_eqey2"]
 atlas = ExtResource("5_6yysx")
 region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0ivb"]
+atlas = ExtResource("6_hpt6b")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nscm"]
+atlas = ExtResource("6_hpt6b")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0o63p"]
+atlas = ExtResource("6_hpt6b")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ijna"]
+atlas = ExtResource("6_hpt6b")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljlal"]
+atlas = ExtResource("6_hpt6b")
+region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v4ks6"]
 atlas = ExtResource("3_t11wx")
@@ -171,6 +192,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_n0ivb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nscm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0o63p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ijna")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljlal")
+}],
+"loop": true,
+"name": &"push",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_v4ks6")
 }, {
 "duration": 1.0,
@@ -229,10 +270,9 @@ _iceRayCast = NodePath("IceRaycast")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_u3kht")
-animation = &"hit"
+animation = &"push"
 autoplay = "idle"
-frame = 2
-frame_progress = 1.0
+frame_progress = 0.912658
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
