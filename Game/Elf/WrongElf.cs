@@ -17,6 +17,7 @@ public partial class WrongElf : CharacterBody2D
     [Export] Timer _moveTimer;
     bool _canMove = true;
     float _speed = 30f;
+    Node2D _firstCollidingNode = null;
 
     // Rzucanie śnieżką
     [Export] Timer _throwTimer;
@@ -101,7 +102,12 @@ public partial class WrongElf : CharacterBody2D
 
     private void _on_LeftVision_body_entered(Node2D body)
     {
-        if (body is Santa player)
+        if (_firstCollidingNode == null)
+        {
+            _firstCollidingNode = body;
+        }
+
+        if (body is Santa player && _firstCollidingNode == player)
         {
             _isAttacking = true;
             _canThrow = false;
@@ -112,7 +118,11 @@ public partial class WrongElf : CharacterBody2D
 
     private void _on_LeftVision_body_exited(Node2D body)
     {
-        if (body is Santa player)
+        if (_firstCollidingNode == body)
+        {
+            _firstCollidingNode = null;
+        }
+        if (body is Santa player && _firstCollidingNode != player)
         {
             _isAttacking = false;
             _canThrow = false;
@@ -123,7 +133,11 @@ public partial class WrongElf : CharacterBody2D
 
     private void _on_RightVision_body_entered(Node2D body)
     {
-        if (body is Santa player)
+        if (_firstCollidingNode == null)
+        {
+            _firstCollidingNode = body;
+        }
+        if (body is Santa player && _firstCollidingNode == player)
         {
             _isAttacking = true;
             _canThrow = false;
@@ -134,7 +148,11 @@ public partial class WrongElf : CharacterBody2D
 
     private void _on_RightVision_body_exited(Node2D body)
     {
-        if (body is Santa player)
+        if (_firstCollidingNode == body)
+        {
+            _firstCollidingNode = null;
+        }
+        if (body is Santa player && _firstCollidingNode != player)
         {
             _isAttacking = false;
             _canThrow = false;
@@ -165,7 +183,7 @@ public partial class WrongElf : CharacterBody2D
     
     private void _on_LeftArea2D_body_entered(Node body)
     {
-        if (body is TileMapLayer)
+        if (body is TileMapLayer || body is Box)
         {
             _isLeftColliding = true;
         }
@@ -173,7 +191,7 @@ public partial class WrongElf : CharacterBody2D
     
     private void _on_LeftArea2D_body_exited(Node body)
     {
-        if (body is TileMapLayer)
+        if (body is TileMapLayer || body is Box)
         {
             _isLeftColliding = false;
         }
@@ -181,7 +199,7 @@ public partial class WrongElf : CharacterBody2D
     
     private void _on_RightArea2D_body_entered(Node body)
     {
-        if (body is TileMapLayer)
+        if (body is TileMapLayer || body is Box)
         {
             _isRightColliding = true;
         }
@@ -189,7 +207,7 @@ public partial class WrongElf : CharacterBody2D
     
     private void _on_RightArea2D_body_exited(Node body)
     {
-        if (body is TileMapLayer)
+        if (body is TileMapLayer || body is Box)
         {
             _isRightColliding = false;
         }
