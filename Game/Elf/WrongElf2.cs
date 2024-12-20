@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class WrongElf : CharacterBody2D
+public partial class WrongElf2 : CharacterBody2D
 {
     bool _isMovingRight = true;
 
@@ -26,7 +26,7 @@ public partial class WrongElf : CharacterBody2D
     // Życie
     [Export] ProgressBar _healthBar;
     float _health = 3;
-    
+
     // Animacja
     [Export] AnimatedSprite2D _animatedSprite;
 
@@ -58,21 +58,17 @@ public partial class WrongElf : CharacterBody2D
             return;
         };
 
-        if (_isMovingRight && _isRightColliding)
+        if (_isMovingRight)
         {
             _velocity.X = _speed;
             _leftVision.Monitoring = false;
             _rightVision.Monitoring = true;
         }
-        else if (!_isMovingRight && _isLeftColliding)
+        else
         {
             _velocity.X = -_speed;
             _leftVision.Monitoring = true;
             _rightVision.Monitoring = false;
-        }
-        else if (!_isRightColliding || !_isLeftColliding)
-        {
-            _isMovingRight = !_isMovingRight;
         }
     }
 
@@ -162,15 +158,16 @@ public partial class WrongElf : CharacterBody2D
             QueueFree();
         }
     }
-    
+
     private void _on_LeftArea2D_body_entered(Node body)
     {
         if (body is TileMapLayer)
         {
             _isLeftColliding = true;
+            _isMovingRight = true; // Change direction
         }
     }
-    
+
     private void _on_LeftArea2D_body_exited(Node body)
     {
         if (body is TileMapLayer)
@@ -178,15 +175,16 @@ public partial class WrongElf : CharacterBody2D
             _isLeftColliding = false;
         }
     }
-    
+
     private void _on_RightArea2D_body_entered(Node body)
     {
         if (body is TileMapLayer)
         {
             _isRightColliding = true;
+            _isMovingRight = false; // Change direction
         }
     }
-    
+
     private void _on_RightArea2D_body_exited(Node body)
     {
         if (body is TileMapLayer)
