@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://h4lt7yvgbulx"]
+
+[ext_resource type="Script" path="res://Game/Door/Door.cs" id="1_66twk"]
+[ext_resource type="Texture2D" uid="uid://co22phtk813gp" path="res://Assets/Door/door.png" id="1_jo7gk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2c0b"]
+size = Vector2(7, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_frlf0"]
+size = Vector2(18, 28)
+
+[node name="Door" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_66twk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_jo7gk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_w2c0b")
+
+[node name="PlayerCollider" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollider"]
+shape = SubResource("RectangleShape2D_frlf0")
+
+[connection signal="body_entered" from="PlayerCollider" to="." method="onBodyEntered"]

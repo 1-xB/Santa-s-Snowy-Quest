@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqqleeu2w6rdh"]
+[gd_scene load_steps=9 format=3 uid="uid://dqqleeu2w6rdh"]
 
 [ext_resource type="Texture2D" uid="uid://defj4oq5h73fu" path="res://Assets/Key/Key.png" id="1_0p4hl"]
+[ext_resource type="Script" path="res://Game/Key/Key.cs" id="1_kg4bs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w0rla"]
 atlas = ExtResource("1_0p4hl")
@@ -42,6 +43,7 @@ animations = [{
 size = Vector2(9, 5)
 
 [node name="Key" type="Area2D"]
+script = ExtResource("1_kg4bs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -52,3 +54,5 @@ frame_progress = 0.568878
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_mif50")
+
+[connection signal="body_entered" from="." to="." method="onBodyEntered"]
