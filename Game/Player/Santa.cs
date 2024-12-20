@@ -27,10 +27,14 @@ public partial class Santa : CharacterBody2D
     
     // Życie 
     [Export] public int Health = 3;
+    [Export] GameManager _gameManager;
     bool _isHitted = false;
-    
+     
     // Poruszanie boxem
     bool _isPushed = false;
+
+    // klucz
+    public bool HasKey = false;
     
     public override void _PhysicsProcess(double delta)
     {
@@ -206,6 +210,7 @@ public partial class Santa : CharacterBody2D
         {
             QueueFree();
         }
+        _gameManager.UpdateHearts(Health);
         _isHitted = true;
         _canThrow = true; // bez tego występował błąd, że jak mikolaj dostanie obrażenia to nie może rzucać śnieżkami, i nie zmienia się animacja.
         _animatedSprite.Play("hit");
