@@ -1,41 +1,41 @@
-[gd_scene load_steps=14 format=3 uid="uid://cpd722fp2pcfe"]
+[gd_scene load_steps=14 format=3 uid="uid://cflc4bcbetalt"]
 
-[ext_resource type="Script" path="res://Game/Elf/WrongElf.cs" id="1_olotx"]
-[ext_resource type="Texture2D" uid="uid://545mdv5ypdwi" path="res://Assets/WrongElfs/2elf-idle.png" id="2_vfjuv"]
-[ext_resource type="Texture2D" uid="uid://pgxd58no6b6q" path="res://Assets/WrongElfs/2elf-walk.png" id="3_6m4rw"]
+[ext_resource type="Script" path="res://Game/Elf/WrongElf2.cs" id="1_bmurl"]
+[ext_resource type="Texture2D" uid="uid://545mdv5ypdwi" path="res://Assets/WrongElfs/2elf-idle.png" id="2_vx4ri"]
+[ext_resource type="Texture2D" uid="uid://pgxd58no6b6q" path="res://Assets/WrongElfs/2elf-walk.png" id="3_y4khr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8xa4d"]
-atlas = ExtResource("2_vfjuv")
+[sub_resource type="AtlasTexture" id="AtlasTexture_12rtq"]
+atlas = ExtResource("2_vx4ri")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hf8vq"]
-atlas = ExtResource("2_vfjuv")
+[sub_resource type="AtlasTexture" id="AtlasTexture_duxw6"]
+atlas = ExtResource("2_vx4ri")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_af4gl"]
-atlas = ExtResource("3_6m4rw")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjm4n"]
+atlas = ExtResource("3_y4khr")
 region = Rect2(0, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b3rvw"]
-atlas = ExtResource("3_6m4rw")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ivda"]
+atlas = ExtResource("3_y4khr")
 region = Rect2(64, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ovsn"]
-atlas = ExtResource("3_6m4rw")
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4dow"]
+atlas = ExtResource("3_y4khr")
 region = Rect2(128, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hitqt"]
-atlas = ExtResource("3_6m4rw")
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1bl0"]
+atlas = ExtResource("3_y4khr")
 region = Rect2(192, 64, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vnytj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8xa4d")
+"texture": SubResource("AtlasTexture_12rtq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hf8vq")
+"texture": SubResource("AtlasTexture_duxw6")
 }],
 "loop": true,
 "name": &"idle",
@@ -43,16 +43,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_af4gl")
+"texture": SubResource("AtlasTexture_qjm4n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b3rvw")
+"texture": SubResource("AtlasTexture_4ivda")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2ovsn")
+"texture": SubResource("AtlasTexture_c4dow")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hitqt")
+"texture": SubResource("AtlasTexture_v1bl0")
 }],
 "loop": true,
 "name": &"walk",
@@ -64,26 +64,25 @@ radius = 15.0
 height = 44.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8wdh8"]
-size = Vector2(124.5, 5)
+size = Vector2(99.4584, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jbo6"]
-size = Vector2(20.3542, 15.6667)
+size = Vector2(14.0417, 5.33331)
 
-[node name="WrongElf" type="CharacterBody2D" node_paths=PackedStringArray("_leftArea2D", "_rightArea2D", "_leftVision", "_rightVision", "_moveTimer", "_throwTimer", "_animatedSprite")]
+[node name="WrongElf" type="CharacterBody2D" node_paths=PackedStringArray("_leftVision", "_rightVision", "_moveTimer", "_throwTimer", "_healthBar", "_animatedSprite")]
 scale = Vector2(0.6, 0.6)
-script = ExtResource("1_olotx")
-_leftArea2D = NodePath("Left Collider")
-_rightArea2D = NodePath("Right Collider")
+script = ExtResource("1_bmurl")
 _leftVision = NodePath("Left Vision")
 _rightVision = NodePath("Right Vision")
 _moveTimer = NodePath("MoveTimer")
 _throwTimer = NodePath("ThrowTimer")
+_healthBar = NodePath("ProgressBar")
 _animatedSprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_vnytj")
-animation = &"idle"
+animation = &"walk"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -99,19 +98,19 @@ shape = SubResource("RectangleShape2D_8wdh8")
 [node name="Right Vision" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right Vision"]
-position = Vector2(66.6667, 13.3333)
+position = Vector2(70, 13.3333)
 shape = SubResource("RectangleShape2D_8wdh8")
 
 [node name="Left Collider" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left Collider"]
-position = Vector2(-18.1563, 27.1667)
+position = Vector2(-15, 25)
 shape = SubResource("RectangleShape2D_5jbo6")
 
 [node name="Right Collider" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right Collider"]
-position = Vector2(20, 26.6667)
+position = Vector2(16.6667, 25)
 shape = SubResource("RectangleShape2D_5jbo6")
 
 [node name="ThrowTimer" type="Timer" parent="."]
@@ -121,9 +120,22 @@ wait_time = 0.6
 wait_time = 0.6
 one_shot = true
 
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -20.0
+offset_top = -27.0
+offset_right = 20.0
+offset_bottom = -22.0
+max_value = 3.0
+step = 1.0
+show_percentage = false
+
 [connection signal="body_entered" from="Left Vision" to="." method="_on_LeftVision_body_entered"]
 [connection signal="body_exited" from="Left Vision" to="." method="_on_LeftVision_body_exited"]
 [connection signal="body_entered" from="Right Vision" to="." method="_on_RightVision_body_entered"]
 [connection signal="body_exited" from="Right Vision" to="." method="_on_RightVision_body_exited"]
+[connection signal="body_entered" from="Left Collider" to="." method="_on_LeftArea2D_body_entered"]
+[connection signal="body_exited" from="Left Collider" to="." method="_on_LeftArea2D_body_exited"]
+[connection signal="body_entered" from="Right Collider" to="." method="_on_RightArea2D_body_entered"]
+[connection signal="body_exited" from="Right Collider" to="." method="_on_RightArea2D_body_exited"]
 [connection signal="timeout" from="ThrowTimer" to="." method="_on_ThrowTimer_timeout"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_MoveTimer_timeout"]

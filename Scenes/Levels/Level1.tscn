@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://bkeamusdss5u7"]
+[gd_scene load_steps=25 format=4 uid="uid://bkeamusdss5u7"]
 
 [ext_resource type="Texture2D" uid="uid://dsxhoyn1heme6" path="res://Assets/Tiles/Tileset.png" id="1_hekee"]
 [ext_resource type="Texture2D" uid="uid://cydhdenfxfcl2" path="res://Assets/Background/Layers/1.png" id="1_iorb3"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c7fp3o2mdmqcm" path="res://Scenes/wrong_elf.tscn" id="12_7lsvt"]
 [ext_resource type="PackedScene" uid="uid://c884lsanhq4nn" path="res://Scenes/box.tscn" id="13_5360d"]
 [ext_resource type="PackedScene" uid="uid://d3q2anusj32wm" path="res://Scenes/coin.tscn" id="14_aaair"]
+[ext_resource type="PackedScene" uid="uid://cflc4bcbetalt" path="res://Scenes/wrong_elf2.tscn" id="15_iqktm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30jks"]
 texture = ExtResource("1_hekee")
@@ -865,7 +866,7 @@ centered = false
 position = Vector2(296, 157)
 
 [node name="Box" parent="Objects" instance=ExtResource("13_5360d")]
-position = Vector2(626, 194)
+position = Vector2(561, 144)
 
 [node name="box" parent="Objects" instance=ExtResource("13_5360d")]
 position = Vector2(612, 27)
@@ -908,5 +909,8 @@ position = Vector2(495, 72)
 
 [node name="Coin10" parent="Objects" instance=ExtResource("14_aaair")]
 position = Vector2(751, 38)
+
+[node name="WrongElf5" parent="Objects" instance=ExtResource("15_iqktm")]
+position = Vector2(623, 204)
 
 [node name="GameManager" type="Node" parent="."]

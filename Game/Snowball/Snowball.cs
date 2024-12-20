@@ -58,6 +58,12 @@ public partial class Snowball : Area2D
             elf.TakeDamage();
         }
         
+        else if (body is WrongElf2)
+        {
+            WrongElf2 elf = body as WrongElf2;
+            elf.TakeDamage();
+        }
+        
         destroy = true;
         _animatedSprite.Play("destroy");
         
