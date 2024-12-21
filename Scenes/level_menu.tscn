@@ -1,0 +1,122 @@
+[gd_scene load_steps=8 format=3 uid="uid://cj33axf7y5hrg"]
+
+[ext_resource type="Script" path="res://Game/GameManager/LevelMenu.cs" id="1_61bri"]
+[ext_resource type="FontFile" uid="uid://cxraemhvap58" path="res://Assets/Font/MinimalPixelFont.ttf" id="3_ocp56"]
+[ext_resource type="Texture2D" uid="uid://cydhdenfxfcl2" path="res://Assets/Background/Layers/1.png" id="4_shrc7"]
+[ext_resource type="Texture2D" uid="uid://d2gfuynfcn3sb" path="res://Assets/Background/Layers/6.png" id="5_isnap"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mod6t"]
+bg_color = Color(0.0756167, 0.462442, 0.637484, 1)
+border_width_left = 10
+border_width_bottom = 10
+border_color = Color(0.154948, 0.43665, 0.573065, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bb8h7"]
+bg_color = Color(0.170862, 0.646532, 0.873217, 1)
+border_width_left = 10
+border_width_bottom = 10
+border_color = Color(0.195712, 0.519502, 0.674458, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_e48n8"]
+Button/styles/hover = SubResource("StyleBoxFlat_mod6t")
+Button/styles/normal = SubResource("StyleBoxFlat_bb8h7")
+
+[node name="LevelMenu" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("1_61bri")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -500.0
+offset_right = 500.0
+offset_bottom = 200.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_ocp56")
+theme_override_font_sizes/font_size = 200
+text = "Choose the Level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -620.0
+offset_top = -77.0
+offset_right = 620.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 60
+
+[node name="Level1" type="Button" parent="CanvasLayer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_e48n8")
+theme_override_fonts/font = ExtResource("3_ocp56")
+theme_override_font_sizes/font_size = 100
+text = "Level 1"
+
+[node name="Level2" type="Button" parent="CanvasLayer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_e48n8")
+theme_override_fonts/font = ExtResource("3_ocp56")
+theme_override_font_sizes/font_size = 100
+text = "Level 2"
+
+[node name="Level3" type="Button" parent="CanvasLayer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_e48n8")
+theme_override_fonts/font = ExtResource("3_ocp56")
+theme_override_font_sizes/font_size = 100
+text = "Level 3"
+
+[node name="Level4" type="Button" parent="CanvasLayer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_e48n8")
+theme_override_fonts/font = ExtResource("3_ocp56")
+theme_override_font_sizes/font_size = 100
+text = "Level 4"
+
+[node name="Level5" type="Button" parent="CanvasLayer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_e48n8")
+theme_override_fonts/font = ExtResource("3_ocp56")
+theme_override_font_sizes/font_size = 100
+text = "Level 5"
+
+[node name="BG" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1068, 536)
+scale = Vector2(4, 4)
+texture = ExtResource("4_shrc7")
+
+[node name="ICE" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1093, 504)
+scale = Vector2(4.06771, 4.02778)
+texture = ExtResource("5_isnap")
+
+[connection signal="button_down" from="CanvasLayer/HBoxContainer/Level1" to="CanvasLayer" method="On1LevelButtonPressed"]
+[connection signal="button_down" from="CanvasLayer/HBoxContainer/Level2" to="CanvasLayer" method="On2LevelButtonPressed"]
+[connection signal="button_down" from="CanvasLayer/HBoxContainer/Level3" to="CanvasLayer" method="On3LevelButtonPressed"]
+[connection signal="button_down" from="CanvasLayer/HBoxContainer/Level4" to="CanvasLayer" method="On4LevelButtonPressed"]
+[connection signal="button_down" from="CanvasLayer/HBoxContainer/Level5" to="CanvasLayer" method="On5LevelButtonPressed"]

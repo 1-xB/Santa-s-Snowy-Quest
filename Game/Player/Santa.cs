@@ -216,6 +216,13 @@ public partial class Santa : CharacterBody2D
         _animatedSprite.Play("hit");
         
     }
+
+    public void Die()
+    {
+        Health = 0;
+        _gameManager.UpdateHearts(Health);
+        QueueFree();
+    }
     
     public void EnterBox()
     {
