@@ -154,6 +154,12 @@ public partial class Santa : CharacterBody2D
     
     private void UpdateAnimation()
     {
+        // musi byc tutaj bo inaczej jak rzucasz śnieżką to nie da sie zmienic kierunku
+        if (_velocity.X != 0)
+        {
+            _animatedSprite.FlipH = _velocity.X < 0;
+        }
+
         if (!_canThrow) return;
         if (_isHitted) return;
 
@@ -184,10 +190,7 @@ public partial class Santa : CharacterBody2D
             }
         }
     
-        if (_velocity.X != 0)
-        {
-            _animatedSprite.FlipH = _velocity.X < 0;
-        }
+        
     }
     
     private void ApplyLadderMovement(double delta)
