@@ -210,4 +210,13 @@ public partial class WrongElf2 : CharacterBody2D
             _isRightColliding = false;
         }
     }
+
+    private void _on_HeadArea2D_body_entered(Node body)
+    {
+        // Jak spadnie box na głowę elfa to umiera
+        if (body is Box)
+        {
+            QueueFree();
+        }
+    }
 }

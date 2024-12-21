@@ -5,7 +5,8 @@ public partial class GameManager : Node
 {
     [Export] private HBoxContainer _livesContainer;
     [Export] CanvasLayer _pauseMenu;
-
+    
+    [Export] AnimationPlayer _animationPlayer;
 
     public override void _Process(double delta)
     {
@@ -48,6 +49,11 @@ public partial class GameManager : Node
     {
         _pauseMenu.Visible = false;
         GetTree().Paused = false;
+    }
+
+    public void GameOver()
+    {
+        _animationPlayer.Play("FadeOut");
     }
     
 }
