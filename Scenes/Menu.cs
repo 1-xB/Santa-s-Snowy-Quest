@@ -3,13 +3,13 @@ using System;
 
 public partial class Menu : CanvasLayer
 {
-    [Export] private PackedScene _gameScene;
+    [Export] private PackedScene _levelMenuScene;
     [Export] private PackedScene _settingsScene;
     [Export] private PackedScene _creditsScene;
     
     private void OnPlayButtonPressed()
     {
-        GetTree().ChangeSceneToPacked(_gameScene);
+        GetTree().ChangeSceneToPacked(_levelMenuScene);
     }
     
     private void OnSettingsButtonPressed()
