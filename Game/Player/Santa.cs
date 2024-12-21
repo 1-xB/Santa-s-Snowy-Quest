@@ -12,6 +12,7 @@ public partial class Santa : CharacterBody2D
     [Export] public float Gravity = 1000f;
     [Export] public float JumpForce = 300f;
     [Export] public float Friction = 800f;
+    public bool CanMove = false;
     
     // Zmienna do rzucania śnieżką
     bool _canThrow = true;
@@ -39,6 +40,7 @@ public partial class Santa : CharacterBody2D
     public override void _PhysicsProcess(double delta)
     {
         
+        if (!CanMove) return;
         _velocity = Velocity;
         
         IceDetect();
@@ -211,7 +213,8 @@ public partial class Santa : CharacterBody2D
         Health--;
         if (Health <= 0)
         {
-            QueueFree();
+            Die();
+            return;
         }
         _gameManager.UpdateHearts(Health);
         _isHitted = true;
@@ -224,7 +227,17 @@ public partial class Santa : CharacterBody2D
     {
         Health = 0;
         _gameManager.UpdateHearts(Health);
-        QueueFree();
+        
+        // wyłączenie wykrywania kolizji
+        foreach (Node2D child in GetChildren())
+        {
+            if (child is CollisionShape2D collisionShape)
+        {
+            collisionShape.CallDeferred("set_disabled", true);
+        }
+        }
+        Visible = false;
+        _gameManager.GameOver();
     }
     
     public void EnterBox()
