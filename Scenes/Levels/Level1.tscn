@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://bli8va0atl4jr"]
+[gd_scene load_steps=47 format=4 uid="uid://bli8va0atl4jr"]
 
 [ext_resource type="Texture2D" uid="uid://bru3e5o6vxovu" path="res://Assets/Hearts/heart pixel art 254x254.png" id="1_de5mx"]
 [ext_resource type="Texture2D" uid="uid://dsxhoyn1heme6" path="res://Assets/Tiles/Tileset.png" id="1_hekee"]
@@ -27,30 +27,6 @@
 [ext_resource type="PackedScene" uid="uid://cxu27q87cbb5y" path="res://Scenes/flying_platform.tscn" id="21_cogu8"]
 [ext_resource type="PackedScene" uid="uid://wtlryg2ddg2u" path="res://Scenes/fall_detector.tscn" id="22_k7pi5"]
 [ext_resource type="Script" path="res://Scenes/Transition.cs" id="27_v5l57"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7py2"]
-bg_color = Color(0.0756167, 0.462442, 0.637484, 1)
-border_width_left = 10
-border_width_bottom = 10
-border_color = Color(0.154948, 0.43665, 0.573065, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opd6c"]
-bg_color = Color(0.170862, 0.646532, 0.873217, 1)
-border_width_left = 10
-border_width_bottom = 10
-border_color = Color(0.195712, 0.519502, 0.674458, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="Theme" id="Theme_4dqey"]
-Button/styles/hover = SubResource("StyleBoxFlat_n7py2")
-Button/styles/normal = SubResource("StyleBoxFlat_opd6c")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30jks"]
 texture = ExtResource("1_hekee")
@@ -962,21 +938,6 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_mu4hr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_yrcc0"]
 resource_name = "FadeOut"
 tracks/0/type = "value"
@@ -992,12 +953,62 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_mu4hr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c6dsi"]
 _data = {
 "FadeIn": SubResource("Animation_p2woj"),
 "FadeOut": SubResource("Animation_yrcc0"),
 "RESET": SubResource("Animation_mu4hr")
 }
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pwkaq"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -250, 0)
+emission_shape = 3
+emission_box_extents = Vector3(150, 1, 1)
+gravity = Vector3(5, 15, 0)
+scale_max = 3.0
+turbulence_influence_min = 0.042
+turbulence_influence_max = 0.042
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7py2"]
+bg_color = Color(0.0756167, 0.462442, 0.637484, 1)
+border_width_left = 10
+border_width_bottom = 10
+border_color = Color(0.154948, 0.43665, 0.573065, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opd6c"]
+bg_color = Color(0.170862, 0.646532, 0.873217, 1)
+border_width_left = 10
+border_width_bottom = 10
+border_color = Color(0.195712, 0.519502, 0.674458, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_4dqey"]
+Button/styles/hover = SubResource("StyleBoxFlat_n7py2")
+Button/styles/normal = SubResource("StyleBoxFlat_opd6c")
 
 [node name="Level1" type="Node2D"]
 
@@ -1010,21 +1021,27 @@ position = Vector2(840, -13)
 [node name="Decoration" type="Node" parent="."]
 
 [node name="UI" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="Hearts" type="Control" parent="UI"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ColorRect" type="ColorRect" parent="UI/Hearts"]
+process_mode = 3
 texture_filter = 1
+layout_mode = 0
 offset_right = 446.0
 offset_bottom = 140.0
 color = Color(0.0142752, 0.0142752, 0.0142752, 0.380392)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Hearts"]
+process_mode = 3
 custom_minimum_size = Vector2(10, 0)
+layout_mode = 0
 offset_top = 86.0
 offset_right = 457.0
 offset_bottom = 101.0
@@ -1059,6 +1076,7 @@ scale = Vector2(0.4, 0.384)
 texture = ExtResource("1_de5mx")
 
 [node name="Coin" type="Control" parent="UI"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
@@ -1068,6 +1086,7 @@ offset_bottom = 40.0
 grow_horizontal = 0
 
 [node name="ColorRect" type="ColorRect" parent="UI/Coin"]
+process_mode = 3
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 1
@@ -1079,94 +1098,21 @@ grow_horizontal = 0
 color = Color(0.0142752, 0.0142752, 0.0142752, 0.380392)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Coin"]
+process_mode = 3
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="coin" type="Panel" parent="UI/Coin/HBoxContainer"]
+process_mode = 3
 layout_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="UI/Coin/HBoxContainer/coin"]
+process_mode = 3
 
 [node name="text" type="Panel" parent="UI/Coin/HBoxContainer"]
+process_mode = 3
 layout_mode = 2
-
-[node name="PauseMenu" type="CanvasLayer" parent="."]
-process_mode = 3
-visible = false
-
-[node name="Menu" type="Control" parent="PauseMenu"]
-process_mode = 3
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="PauseMenu/Menu"]
-process_mode = 3
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.137255, 0.219608, 0.215686, 0.419608)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Menu"]
-process_mode = 3
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -186.5
-offset_top = -160.0
-offset_right = 186.5
-offset_bottom = 160.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Play" type="Button" parent="PauseMenu/Menu/VBoxContainer"]
-process_mode = 3
-texture_filter = 1
-layout_mode = 2
-theme = SubResource("Theme_4dqey")
-theme_override_fonts/font = ExtResource("2_yanx7")
-theme_override_font_sizes/font_size = 100
-text = "Resume"
-
-[node name="Restart" type="Button" parent="PauseMenu/Menu/VBoxContainer"]
-process_mode = 3
-texture_filter = 1
-layout_mode = 2
-theme = SubResource("Theme_4dqey")
-theme_override_fonts/font = ExtResource("2_yanx7")
-theme_override_font_sizes/font_size = 100
-text = "Restart
-"
-
-[node name="Instructions" type="Button" parent="PauseMenu/Menu/VBoxContainer"]
-process_mode = 3
-texture_filter = 1
-layout_mode = 2
-theme = SubResource("Theme_4dqey")
-theme_override_fonts/font = ExtResource("2_yanx7")
-theme_override_font_sizes/font_size = 100
-text = "Instructions
-"
-
-[node name="Back" type="Button" parent="PauseMenu/Menu/VBoxContainer"]
-process_mode = 3
-texture_filter = 1
-layout_mode = 2
-theme = SubResource("Theme_4dqey")
-theme_override_fonts/font = ExtResource("2_yanx7")
-theme_override_font_sizes/font_size = 100
-text = "Back to home
-"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -1324,7 +1270,100 @@ libraries = {
 "": SubResource("AnimationLibrary_c6dsi")
 }
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(400, 101)
+scale = Vector2(3.92, 1)
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_pwkaq")
+lifetime = 10.0
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+
+[node name="Menu" type="Control" parent="PauseMenu"]
+process_mode = 3
+z_index = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu/Menu"]
+process_mode = 3
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.137255, 0.219608, 0.215686, 0.419608)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Menu"]
+process_mode = 3
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -186.5
+offset_top = -160.0
+offset_right = 186.5
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="PauseMenu/Menu/VBoxContainer"]
+process_mode = 3
+z_index = 2
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_4dqey")
+theme_override_fonts/font = ExtResource("2_yanx7")
+theme_override_font_sizes/font_size = 100
+text = "Resume"
+
+[node name="Restart" type="Button" parent="PauseMenu/Menu/VBoxContainer"]
+process_mode = 3
+z_index = 2
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_4dqey")
+theme_override_fonts/font = ExtResource("2_yanx7")
+theme_override_font_sizes/font_size = 100
+text = "Restart
+"
+
+[node name="Instructions" type="Button" parent="PauseMenu/Menu/VBoxContainer"]
+process_mode = 3
+z_index = 2
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_4dqey")
+theme_override_fonts/font = ExtResource("2_yanx7")
+theme_override_font_sizes/font_size = 100
+text = "Instructions
+"
+
+[node name="Back" type="Button" parent="PauseMenu/Menu/VBoxContainer"]
+process_mode = 3
+z_index = 2
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_4dqey")
+theme_override_fonts/font = ExtResource("2_yanx7")
+theme_override_font_sizes/font_size = 100
+text = "Back to home
+"
+
+[connection signal="animation_finished" from="AnimationManager/AnimationPlayer" to="AnimationManager" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="button_down" from="PauseMenu/Menu/VBoxContainer/Play" to="GameManager" method="ResumeGame"]
 [connection signal="button_down" from="PauseMenu/Menu/VBoxContainer/Restart" to="GameManager" method="RestartLevel"]
 [connection signal="button_down" from="PauseMenu/Menu/VBoxContainer/Back" to="GameManager" method="GoToMainMenu"]
-[connection signal="animation_finished" from="AnimationManager/AnimationPlayer" to="AnimationManager" method="_on_AnimationPlayer_animation_finished"]
