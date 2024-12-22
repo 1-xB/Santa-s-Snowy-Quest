@@ -73,6 +73,7 @@ public partial class GameManager : Node
     {
         _coinCounter.SaveCoins();
         _animationPlayer.Play("FadeOut");
+    
 
     }
 
@@ -80,6 +81,8 @@ public partial class GameManager : Node
     {
         if (body is Santa)
         {
+            Santa santa = (Santa)body;
+            santa.Win = true;
             Victory();
         }
     }   

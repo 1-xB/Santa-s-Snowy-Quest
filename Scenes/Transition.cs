@@ -21,7 +21,15 @@ public partial class Transition : CanvasLayer
         }
         else if (anim_name == "FadeOut")
         {
-            GetTree().ReloadCurrentScene();
+            if (santa.Win)
+            {
+                GetTree().ChangeSceneToFile("res://Scenes/level_menu.tscn");
+            }
+            else
+            {
+                GetTree().ReloadCurrentScene();
+            }
+            
         }
     }
 }

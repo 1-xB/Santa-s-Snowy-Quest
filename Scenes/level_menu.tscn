@@ -371,6 +371,18 @@ theme_override_fonts/font = ExtResource("3_ocp56")
 theme_override_font_sizes/font_size = 150
 text = "0"
 
+[node name="Back" type="Button" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 21.0
+offset_top = 12.0
+offset_right = 255.0
+offset_bottom = 96.0
+theme = SubResource("Theme_e48n8")
+theme_override_fonts/font = ExtResource("3_ocp56")
+theme_override_font_sizes/font_size = 100
+text = "Back
+"
+
 [node name="BG" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1032, 544)
@@ -388,3 +400,4 @@ texture = ExtResource("5_isnap")
 [connection signal="button_down" from="CanvasLayer/Levels/Level3" to="CanvasLayer" method="On3LevelButtonPressed"]
 [connection signal="button_down" from="CanvasLayer/Levels/Level4" to="CanvasLayer" method="On4LevelButtonPressed"]
 [connection signal="button_down" from="CanvasLayer/Levels/Level5" to="CanvasLayer" method="On5LevelButtonPressed"]
+[connection signal="button_down" from="CanvasLayer/Back" to="CanvasLayer" method="OnBackButtonPressed"]
