@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://bli8va0atl4jr"]
+[gd_scene load_steps=49 format=4 uid="uid://bli8va0atl4jr"]
 
 [ext_resource type="Texture2D" uid="uid://bru3e5o6vxovu" path="res://Assets/Hearts/heart pixel art 254x254.png" id="1_de5mx"]
 [ext_resource type="Texture2D" uid="uid://dsxhoyn1heme6" path="res://Assets/Tiles/Tileset.png" id="1_hekee"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bgkpus1exo2b2" path="res://Assets/Background/Layers/3.png" id="3_s1e4d"]
 [ext_resource type="Texture2D" uid="uid://bpycflnprlrfb" path="res://Assets/Tiles/2.png" id="3_xgqo1"]
 [ext_resource type="Texture2D" uid="uid://bu53axrmi53t4" path="res://Assets/Tiles/3.png" id="4_pe845"]
+[ext_resource type="Texture2D" uid="uid://cur3og37ip3jm" path="res://Assets/Coin/Coin-1.png" id="4_uhsw5"]
 [ext_resource type="Texture2D" uid="uid://dutw6dxhbtbcd" path="res://Assets/Tiles/Trees/2.png" id="5_3r1d2"]
 [ext_resource type="Texture2D" uid="uid://c5l2ly7ty85ga" path="res://Assets/Tiles/4.png" id="5_vky2f"]
 [ext_resource type="Texture2D" uid="uid://b2sy2ydbb2xbh" path="res://Assets/Tiles/5.png" id="6_kkjin"]
@@ -922,6 +923,9 @@ sources/7 = SubResource("TileSetAtlasSource_0c3ra")
 sources/9 = SubResource("TileSetAtlasSource_om0w8")
 sources/10 = SubResource("TileSetAtlasSource_64bac")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkn4x"]
+size = Vector2(49, 64.5)
+
 [sub_resource type="Animation" id="Animation_p2woj"]
 resource_name = "FadeIn"
 length = 2.0
@@ -1081,8 +1085,8 @@ layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
+offset_left = -302.0
+offset_bottom = 139.0
 grow_horizontal = 0
 
 [node name="ColorRect" type="ColorRect" parent="UI/Coin"]
@@ -1092,16 +1096,26 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -446.0
+offset_left = -301.0
 offset_bottom = 140.0
 grow_horizontal = 0
 color = Color(0.0142752, 0.0142752, 0.0142752, 0.380392)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Coin"]
 process_mode = 3
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -0.5
+offset_right = 61.0
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 82
 
 [node name="coin" type="Panel" parent="UI/Coin/HBoxContainer"]
 process_mode = 3
@@ -1109,10 +1123,24 @@ layout_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="UI/Coin/HBoxContainer/coin"]
 process_mode = 3
+texture_filter = 1
+scale = Vector2(10, 10)
+texture = ExtResource("4_uhsw5")
 
 [node name="text" type="Panel" parent="UI/Coin/HBoxContainer"]
 process_mode = 3
 layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Coin/HBoxContainer/text"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = -59.0
+offset_right = 43.0
+offset_bottom = 41.0
+theme_override_fonts/font = ExtResource("2_yanx7")
+theme_override_font_sizes/font_size = 150
+text = "0"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -1140,35 +1168,33 @@ position = Vector2(446, 62)
 [node name="WrongElf4" parent="Objects" instance=ExtResource("12_7lsvt")]
 position = Vector2(136, 14)
 
-[node name="Coin" parent="Objects" instance=ExtResource("14_aaair")]
+[node name="Coin" parent="Objects" node_paths=PackedStringArray("label") instance=ExtResource("14_aaair")]
 position = Vector2(176, 201)
+label = NodePath("../../UI/Coin/HBoxContainer/text/Label")
 
-[node name="Coin2" parent="Objects" instance=ExtResource("14_aaair")]
-position = Vector2(257, 169)
+[node name="Coin2" parent="Objects" node_paths=PackedStringArray("label") instance=ExtResource("14_aaair")]
+position = Vector2(258, 171)
+label = NodePath("../../UI/Coin/HBoxContainer/text/Label")
 
-[node name="Coin3" parent="Objects" instance=ExtResource("14_aaair")]
-position = Vector2(255, 84)
+[node name="Coin3" parent="Objects" node_paths=PackedStringArray("label") instance=ExtResource("14_aaair")]
+position = Vector2(391, 178)
+label = NodePath("../../UI/Coin/HBoxContainer/text/Label")
 
-[node name="Coin4" parent="Objects" instance=ExtResource("14_aaair")]
-position = Vector2(206, 57)
+[node name="Coin4" parent="Objects" node_paths=PackedStringArray("label") instance=ExtResource("14_aaair")]
+position = Vector2(560, 154)
+label = NodePath("../../UI/Coin/HBoxContainer/text/Label")
 
-[node name="Coin5" parent="Objects" instance=ExtResource("14_aaair")]
-position = Vector2(64, 41)
+[node name="Coin5" parent="Objects" node_paths=PackedStringArray("label") instance=ExtResource("14_aaair")]
+position = Vector2(465, 72)
+label = NodePath("../../UI/Coin/HBoxContainer/text/Label")
 
-[node name="Coin6" parent="Objects" instance=ExtResource("14_aaair")]
-position = Vector2(388, 180)
+[node name="Coin6" parent="Objects" node_paths=PackedStringArray("label") instance=ExtResource("14_aaair")]
+position = Vector2(821, 215)
+label = NodePath("../../UI/Coin/HBoxContainer/text/Label")
 
-[node name="Coin7" parent="Objects" instance=ExtResource("14_aaair")]
-position = Vector2(495, 187)
-
-[node name="Coin8" parent="Objects" instance=ExtResource("14_aaair")]
-position = Vector2(561, 154)
-
-[node name="Coin9" parent="Objects" instance=ExtResource("14_aaair")]
-position = Vector2(495, 72)
-
-[node name="Coin10" parent="Objects" instance=ExtResource("14_aaair")]
-position = Vector2(751, 38)
+[node name="Coin7" parent="Objects" node_paths=PackedStringArray("label") instance=ExtResource("14_aaair")]
+position = Vector2(849, 38)
+label = NodePath("../../UI/Coin/HBoxContainer/text/Label")
 
 [node name="WrongElf5" parent="Objects" instance=ExtResource("15_iqktm")]
 position = Vector2(691, 204)
@@ -1245,12 +1271,19 @@ scale = Vector2(1.03578, 0.905)
 texture = ExtResource("3_s1e4d")
 centered = false
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("_livesContainer", "_pauseMenu", "_animationPlayer")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("_livesContainer", "_pauseMenu", "_animationPlayer", "_coinLabel")]
 process_mode = 3
 script = ExtResource("17_gn8v1")
 _livesContainer = NodePath("../UI/Hearts/HBoxContainer")
 _pauseMenu = NodePath("../PauseMenu")
 _animationPlayer = NodePath("../AnimationManager/AnimationPlayer")
+_coinLabel = NodePath("../UI/Coin/HBoxContainer/text/Label")
+
+[node name="WinArea" type="Area2D" parent="GameManager"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameManager/WinArea"]
+position = Vector2(966.5, 127.25)
+shape = SubResource("RectangleShape2D_rkn4x")
 
 [node name="AnimationManager" type="CanvasLayer" parent="." node_paths=PackedStringArray("animationPlayer", "santa")]
 script = ExtResource("27_v5l57")
@@ -1363,6 +1396,7 @@ theme_override_font_sizes/font_size = 100
 text = "Back to home
 "
 
+[connection signal="body_entered" from="GameManager/WinArea" to="GameManager" method="OnWinAreaBodyEntered"]
 [connection signal="animation_finished" from="AnimationManager/AnimationPlayer" to="AnimationManager" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="button_down" from="PauseMenu/Menu/VBoxContainer/Play" to="GameManager" method="ResumeGame"]
 [connection signal="button_down" from="PauseMenu/Menu/VBoxContainer/Restart" to="GameManager" method="RestartLevel"]
