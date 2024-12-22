@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cj33axf7y5hrg"]
+[gd_scene load_steps=10 format=3 uid="uid://cj33axf7y5hrg"]
 
 [ext_resource type="Script" path="res://Game/GameManager/LevelMenu.cs" id="1_61bri"]
+[ext_resource type="Texture2D" uid="uid://cur3og37ip3jm" path="res://Assets/Coin/Coin-1.png" id="3_gyavw"]
+[ext_resource type="PackedScene" uid="uid://quuu8euqo607" path="res://Scenes/CoinManager.tscn" id="3_j2joo"]
 [ext_resource type="FontFile" uid="uid://cxraemhvap58" path="res://Assets/Font/MinimalPixelFont.ttf" id="3_ocp56"]
 [ext_resource type="Texture2D" uid="uid://cydhdenfxfcl2" path="res://Assets/Background/Layers/1.png" id="4_shrc7"]
 [ext_resource type="Texture2D" uid="uid://d2gfuynfcn3sb" path="res://Assets/Background/Layers/6.png" id="5_isnap"]
@@ -31,8 +33,10 @@ Button/styles/normal = SubResource("StyleBoxFlat_bb8h7")
 
 [node name="LevelMenu" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("_levelsContainer", "_coinLabel")]
 script = ExtResource("1_61bri")
+_levelsContainer = NodePath("Levels")
+_coinLabel = NodePath("Coin/HBoxContainer/text/Coins")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 texture_filter = 1
@@ -49,7 +53,7 @@ text = "Choose the Level"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+[node name="Levels" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -63,7 +67,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 60
 
-[node name="Level1" type="Button" parent="CanvasLayer/HBoxContainer"]
+[node name="Level1" type="Button" parent="CanvasLayer/Levels"]
 texture_filter = 1
 layout_mode = 2
 theme = SubResource("Theme_e48n8")
@@ -71,7 +75,7 @@ theme_override_fonts/font = ExtResource("3_ocp56")
 theme_override_font_sizes/font_size = 100
 text = "Level 1"
 
-[node name="Level2" type="Button" parent="CanvasLayer/HBoxContainer"]
+[node name="Level2" type="Button" parent="CanvasLayer/Levels"]
 texture_filter = 1
 layout_mode = 2
 theme = SubResource("Theme_e48n8")
@@ -79,7 +83,62 @@ theme_override_fonts/font = ExtResource("3_ocp56")
 theme_override_font_sizes/font_size = 100
 text = "Level 2"
 
-[node name="Level3" type="Button" parent="CanvasLayer/HBoxContainer"]
+[node name="Price" type="Control" parent="CanvasLayer/Levels/Level2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Levels/Level2/Price"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.301961)
+
+[node name="Control" type="Control" parent="CanvasLayer/Levels/Level2/Price"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Levels/Level2/Price/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 41.0
+offset_top = -42.0
+offset_right = 81.0
+offset_bottom = 41.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "5"
+
+[node name="Control2" type="Control" parent="CanvasLayer/Levels/Level2/Price"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -1.0
+offset_right = -31.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Levels/Level2/Price/Control2"]
+position = Vector2(-37, 1)
+scale = Vector2(10, 10)
+texture = ExtResource("3_gyavw")
+
+[node name="Level3" type="Button" parent="CanvasLayer/Levels"]
 texture_filter = 1
 layout_mode = 2
 theme = SubResource("Theme_e48n8")
@@ -87,7 +146,62 @@ theme_override_fonts/font = ExtResource("3_ocp56")
 theme_override_font_sizes/font_size = 100
 text = "Level 3"
 
-[node name="Level4" type="Button" parent="CanvasLayer/HBoxContainer"]
+[node name="Price" type="Control" parent="CanvasLayer/Levels/Level3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Levels/Level3/Price"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.301961)
+
+[node name="Control" type="Control" parent="CanvasLayer/Levels/Level3/Price"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Levels/Level3/Price/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 23.0
+offset_top = -43.0
+offset_right = 92.0
+offset_bottom = 40.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "10"
+
+[node name="Control2" type="Control" parent="CanvasLayer/Levels/Level3/Price"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -1.0
+offset_right = -31.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Levels/Level3/Price/Control2"]
+position = Vector2(-37, 1)
+scale = Vector2(10, 10)
+texture = ExtResource("3_gyavw")
+
+[node name="Level4" type="Button" parent="CanvasLayer/Levels"]
 texture_filter = 1
 layout_mode = 2
 theme = SubResource("Theme_e48n8")
@@ -95,7 +209,62 @@ theme_override_fonts/font = ExtResource("3_ocp56")
 theme_override_font_sizes/font_size = 100
 text = "Level 4"
 
-[node name="Level5" type="Button" parent="CanvasLayer/HBoxContainer"]
+[node name="Price" type="Control" parent="CanvasLayer/Levels/Level4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Levels/Level4/Price"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.301961)
+
+[node name="Control" type="Control" parent="CanvasLayer/Levels/Level4/Price"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Levels/Level4/Price/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 23.0
+offset_top = -43.0
+offset_right = 92.0
+offset_bottom = 40.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "15"
+
+[node name="Control2" type="Control" parent="CanvasLayer/Levels/Level4/Price"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -1.0
+offset_right = -31.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Levels/Level4/Price/Control2"]
+position = Vector2(-37, 1)
+scale = Vector2(10, 10)
+texture = ExtResource("3_gyavw")
+
+[node name="Level5" type="Button" parent="CanvasLayer/Levels"]
 texture_filter = 1
 layout_mode = 2
 theme = SubResource("Theme_e48n8")
@@ -103,9 +272,108 @@ theme_override_fonts/font = ExtResource("3_ocp56")
 theme_override_font_sizes/font_size = 100
 text = "Level 5"
 
+[node name="Price" type="Control" parent="CanvasLayer/Levels/Level5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Levels/Level5/Price"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.301961)
+
+[node name="Control" type="Control" parent="CanvasLayer/Levels/Level5/Price"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Levels/Level5/Price/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 23.0
+offset_top = -43.0
+offset_right = 92.0
+offset_bottom = 40.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "20"
+
+[node name="Control2" type="Control" parent="CanvasLayer/Levels/Level5/Price"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -1.0
+offset_right = -31.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Levels/Level5/Price/Control2"]
+position = Vector2(-37, 1)
+scale = Vector2(10, 10)
+texture = ExtResource("3_gyavw")
+
+[node name="Coin" parent="CanvasLayer" node_paths=PackedStringArray("_coinLabel") instance=ExtResource("3_j2joo")]
+_coinLabel = NodePath("HBoxContainer/text/Coins")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Coin"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -0.5
+offset_right = 61.0
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 82
+
+[node name="coin" type="Panel" parent="CanvasLayer/Coin/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Coin/HBoxContainer/coin"]
+process_mode = 3
+texture_filter = 1
+scale = Vector2(10, 10)
+texture = ExtResource("3_gyavw")
+
+[node name="text" type="Panel" parent="CanvasLayer/Coin/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+
+[node name="Coins" type="Label" parent="CanvasLayer/Coin/HBoxContainer/text"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 25.0
+offset_top = -58.0
+offset_right = 63.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("3_ocp56")
+theme_override_font_sizes/font_size = 150
+text = "0"
+
 [node name="BG" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1068, 536)
+position = Vector2(1032, 544)
 scale = Vector2(4, 4)
 texture = ExtResource("4_shrc7")
 
@@ -115,8 +383,8 @@ position = Vector2(1093, 504)
 scale = Vector2(4.06771, 4.02778)
 texture = ExtResource("5_isnap")
 
-[connection signal="button_down" from="CanvasLayer/HBoxContainer/Level1" to="CanvasLayer" method="On1LevelButtonPressed"]
-[connection signal="button_down" from="CanvasLayer/HBoxContainer/Level2" to="CanvasLayer" method="On2LevelButtonPressed"]
-[connection signal="button_down" from="CanvasLayer/HBoxContainer/Level3" to="CanvasLayer" method="On3LevelButtonPressed"]
-[connection signal="button_down" from="CanvasLayer/HBoxContainer/Level4" to="CanvasLayer" method="On4LevelButtonPressed"]
-[connection signal="button_down" from="CanvasLayer/HBoxContainer/Level5" to="CanvasLayer" method="On5LevelButtonPressed"]
+[connection signal="button_down" from="CanvasLayer/Levels/Level1" to="CanvasLayer" method="On1LevelButtonPressed"]
+[connection signal="button_down" from="CanvasLayer/Levels/Level2" to="CanvasLayer" method="On2LevelButtonPressed"]
+[connection signal="button_down" from="CanvasLayer/Levels/Level3" to="CanvasLayer" method="On3LevelButtonPressed"]
+[connection signal="button_down" from="CanvasLayer/Levels/Level4" to="CanvasLayer" method="On4LevelButtonPressed"]
+[connection signal="button_down" from="CanvasLayer/Levels/Level5" to="CanvasLayer" method="On5LevelButtonPressed"]

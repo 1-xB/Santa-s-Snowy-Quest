@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://bli8va0atl4jr"]
+[gd_scene load_steps=50 format=4 uid="uid://bli8va0atl4jr"]
 
 [ext_resource type="Texture2D" uid="uid://bru3e5o6vxovu" path="res://Assets/Hearts/heart pixel art 254x254.png" id="1_de5mx"]
 [ext_resource type="Texture2D" uid="uid://dsxhoyn1heme6" path="res://Assets/Tiles/Tileset.png" id="1_hekee"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dejqobgumgcg1" path="res://Assets/Background/Layers/2.png" id="2_2fckn"]
 [ext_resource type="Texture2D" uid="uid://cicshybljguyv" path="res://Assets/Tiles/1.png" id="2_u6ur4"]
 [ext_resource type="FontFile" uid="uid://cxraemhvap58" path="res://Assets/Font/MinimalPixelFont.ttf" id="2_yanx7"]
+[ext_resource type="PackedScene" uid="uid://quuu8euqo607" path="res://Scenes/CoinManager.tscn" id="3_56j2u"]
 [ext_resource type="Texture2D" uid="uid://bgkpus1exo2b2" path="res://Assets/Background/Layers/3.png" id="3_s1e4d"]
 [ext_resource type="Texture2D" uid="uid://bpycflnprlrfb" path="res://Assets/Tiles/2.png" id="3_xgqo1"]
 [ext_resource type="Texture2D" uid="uid://bu53axrmi53t4" path="res://Assets/Tiles/3.png" id="4_pe845"]
@@ -1027,6 +1028,60 @@ position = Vector2(840, -13)
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
 
+[node name="Coin2" parent="UI" node_paths=PackedStringArray("_coinLabel") instance=ExtResource("3_56j2u")]
+_coinLabel = NodePath("HBoxContainer/text/Coins")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Coin2"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -0.5
+offset_right = 61.0
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 82
+
+[node name="coin" type="Panel" parent="UI/Coin2/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Coin2/HBoxContainer/coin"]
+process_mode = 3
+texture_filter = 1
+scale = Vector2(10, 10)
+texture = ExtResource("4_uhsw5")
+
+[node name="text" type="Panel" parent="UI/Coin2/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+
+[node name="Coins" type="Label" parent="UI/Coin2/HBoxContainer/text"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 25.0
+offset_top = -58.0
+offset_right = 63.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("2_yanx7")
+theme_override_font_sizes/font_size = 150
+text = "0"
+
+[node name="ColorRect" type="ColorRect" parent="UI/Coin2"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.427451)
+
 [node name="Hearts" type="Control" parent="UI"]
 process_mode = 3
 layout_mode = 3
@@ -1079,69 +1134,6 @@ position = Vector2(-13.75, -15.75)
 scale = Vector2(0.4, 0.384)
 texture = ExtResource("1_de5mx")
 
-[node name="Coin" type="Control" parent="UI"]
-process_mode = 3
-layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -302.0
-offset_bottom = 139.0
-grow_horizontal = 0
-
-[node name="ColorRect" type="ColorRect" parent="UI/Coin"]
-process_mode = 3
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -301.0
-offset_bottom = 140.0
-grow_horizontal = 0
-color = Color(0.0142752, 0.0142752, 0.0142752, 0.380392)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Coin"]
-process_mode = 3
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -61.0
-offset_top = -0.5
-offset_right = 61.0
-offset_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 82
-
-[node name="coin" type="Panel" parent="UI/Coin/HBoxContainer"]
-process_mode = 3
-layout_mode = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/Coin/HBoxContainer/coin"]
-process_mode = 3
-texture_filter = 1
-scale = Vector2(10, 10)
-texture = ExtResource("4_uhsw5")
-
-[node name="text" type="Panel" parent="UI/Coin/HBoxContainer"]
-process_mode = 3
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UI/Coin/HBoxContainer/text"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 3.0
-offset_top = -59.0
-offset_right = 43.0
-offset_bottom = 41.0
-theme_override_fonts/font = ExtResource("2_yanx7")
-theme_override_font_sizes/font_size = 150
-text = "0"
-
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
 position = Vector2(16, 47)
@@ -1170,31 +1162,31 @@ position = Vector2(136, 14)
 
 [node name="Coin" parent="Objects" node_paths=PackedStringArray("label") instance=ExtResource("14_aaair")]
 position = Vector2(176, 201)
-label = NodePath("../../UI/Coin/HBoxContainer/text/Label")
+label = NodePath("../../UI/Coin2/HBoxContainer/text/Coins")
 
 [node name="Coin2" parent="Objects" node_paths=PackedStringArray("label") instance=ExtResource("14_aaair")]
 position = Vector2(258, 171)
-label = NodePath("../../UI/Coin/HBoxContainer/text/Label")
+label = NodePath("../../UI/Coin2/HBoxContainer/text/Coins")
 
 [node name="Coin3" parent="Objects" node_paths=PackedStringArray("label") instance=ExtResource("14_aaair")]
 position = Vector2(391, 178)
-label = NodePath("../../UI/Coin/HBoxContainer/text/Label")
+label = NodePath("../../UI/Coin2/HBoxContainer/text/Coins")
 
 [node name="Coin4" parent="Objects" node_paths=PackedStringArray("label") instance=ExtResource("14_aaair")]
 position = Vector2(560, 154)
-label = NodePath("../../UI/Coin/HBoxContainer/text/Label")
+label = NodePath("../../UI/Coin2/HBoxContainer/text/Coins")
 
 [node name="Coin5" parent="Objects" node_paths=PackedStringArray("label") instance=ExtResource("14_aaair")]
 position = Vector2(465, 72)
-label = NodePath("../../UI/Coin/HBoxContainer/text/Label")
+label = NodePath("../../UI/Coin2/HBoxContainer/text/Coins")
 
 [node name="Coin6" parent="Objects" node_paths=PackedStringArray("label") instance=ExtResource("14_aaair")]
 position = Vector2(821, 215)
-label = NodePath("../../UI/Coin/HBoxContainer/text/Label")
+label = NodePath("../../UI/Coin2/HBoxContainer/text/Coins")
 
 [node name="Coin7" parent="Objects" node_paths=PackedStringArray("label") instance=ExtResource("14_aaair")]
 position = Vector2(849, 38)
-label = NodePath("../../UI/Coin/HBoxContainer/text/Label")
+label = NodePath("../../UI/Coin2/HBoxContainer/text/Coins")
 
 [node name="WrongElf5" parent="Objects" instance=ExtResource("15_iqktm")]
 position = Vector2(691, 204)
@@ -1271,13 +1263,13 @@ scale = Vector2(1.03578, 0.905)
 texture = ExtResource("3_s1e4d")
 centered = false
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("_livesContainer", "_pauseMenu", "_animationPlayer", "_coinLabel")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("_livesContainer", "_pauseMenu", "_animationPlayer", "_coinCounter")]
 process_mode = 3
 script = ExtResource("17_gn8v1")
 _livesContainer = NodePath("../UI/Hearts/HBoxContainer")
 _pauseMenu = NodePath("../PauseMenu")
 _animationPlayer = NodePath("../AnimationManager/AnimationPlayer")
-_coinLabel = NodePath("../UI/Coin/HBoxContainer/text/Label")
+_coinCounter = NodePath("../UI/Coin2")
 
 [node name="WinArea" type="Area2D" parent="GameManager"]
 
@@ -1304,7 +1296,6 @@ libraries = {
 }
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-visible = false
 z_index = 1
 position = Vector2(400, 101)
 scale = Vector2(3.92, 1)
