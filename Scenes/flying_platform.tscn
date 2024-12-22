@@ -1,15 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxu27q87cbb5y"]
+[gd_scene load_steps=8 format=3 uid="uid://cxu27q87cbb5y"]
 
 [ext_resource type="Texture2D" uid="uid://2mkwu63jgdvo" path="res://Assets/Tiles/Tile_01.png" id="1_ahpud"]
-[ext_resource type="Script" path="res://Game/FlyingPlatform/FlyingPlatform.cs" id="1_rlsxr"]
+[ext_resource type="Script" path="res://Game/FlyingPlatform/FlyingPlatform.cs" id="1_so32g"]
 [ext_resource type="Texture2D" uid="uid://x346ewbcdmff" path="res://Assets/Tiles/Tile_02.png" id="2_7ldik"]
 [ext_resource type="Texture2D" uid="uid://d2s4lnkadopcw" path="res://Assets/Tiles/Tile_03.png" id="3_gn0u6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhtaj"]
-size = Vector2(94, 31)
+size = Vector2(94, 3)
 
-[node name="FlyingPlatform" type="CharacterBody2D"]
-script = ExtResource("1_rlsxr")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dyft"]
+size = Vector2(3, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ypwm7"]
+size = Vector2(3, 18)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_so32g")
 
 [node name="1" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -26,5 +32,14 @@ position = Vector2(32, 0)
 texture = ExtResource("3_gn0u6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(0, -13.5)
 shape = SubResource("RectangleShape2D_uhtaj")
+one_way_collision_margin = 128.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-45.5, -2.5)
+shape = SubResource("RectangleShape2D_5dyft")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(46, -3)
+shape = SubResource("RectangleShape2D_ypwm7")
