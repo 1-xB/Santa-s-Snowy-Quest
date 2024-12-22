@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://cxu27q87cbb5y" path="res://Scenes/flying_platform.tscn" id="21_cogu8"]
 [ext_resource type="PackedScene" uid="uid://wtlryg2ddg2u" path="res://Scenes/fall_detector.tscn" id="22_k7pi5"]
 [ext_resource type="Script" path="res://Scenes/Transition.cs" id="27_v5l57"]
+[ext_resource type="Material" uid="uid://bim62unaph6va" path="res://Scenes/Levels/snow.tres" id="30_ki05o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30jks"]
 texture = ExtResource("1_hekee")
@@ -980,17 +981,6 @@ _data = {
 "RESET": SubResource("Animation_mu4hr")
 }
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pwkaq"]
-lifetime_randomness = 1.0
-particle_flag_disable_z = true
-emission_shape_offset = Vector3(0, -250, 0)
-emission_shape = 3
-emission_box_extents = Vector3(150, 1, 1)
-gravity = Vector3(5, 15, 0)
-scale_max = 3.0
-turbulence_influence_min = 0.042
-turbulence_influence_max = 0.042
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7py2"]
 bg_color = Color(0.0756167, 0.462442, 0.637484, 1)
 border_width_left = 10
@@ -1300,7 +1290,7 @@ z_index = 1
 position = Vector2(400, 101)
 scale = Vector2(3.92, 1)
 amount = 1000
-process_material = SubResource("ParticleProcessMaterial_pwkaq")
+process_material = ExtResource("30_ki05o")
 lifetime = 10.0
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]

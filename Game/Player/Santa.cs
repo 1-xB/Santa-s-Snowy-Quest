@@ -36,6 +36,8 @@ public partial class Santa : CharacterBody2D
 
     // klucz
     public bool HasKey = false;
+
+    public bool Win = false;
     
     public override void _PhysicsProcess(double delta)
     {

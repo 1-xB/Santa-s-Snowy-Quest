@@ -83,4 +83,9 @@ public partial class LevelMenu : CanvasLayer
     {
         GetTree().ChangeSceneToFile("res://Scenes/Levels/Level5.tscn");
     }
+
+    private void OnBackButtonPressed()
+    {
+        GetTree().ChangeSceneToFile("res://Scenes/StartMenu.tscn");
+    }
 }
