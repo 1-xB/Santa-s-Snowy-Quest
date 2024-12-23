@@ -33,10 +33,11 @@ Button/styles/normal = SubResource("StyleBoxFlat_rwyim")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("_credits")]
 script = ExtResource("1_arbp3")
 _levelMenuScene = ExtResource("2_gholk")
 _settingsScene = ExtResource("3_8igjs")
+_credits = NodePath("Credits")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 texture_filter = 1
@@ -101,6 +102,70 @@ theme_override_font_sizes/font_size = 100
 text = "Quit
 "
 
+[node name="Credits" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -594.5
+offset_top = -407.5
+offset_right = 594.5
+offset_bottom = 407.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.054902, 0.054902, 0.780392)
+
+[node name="Label" type="Label" parent="CanvasLayer/Credits"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 67.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_8d8br")
+theme_override_font_sizes/font_size = 100
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_8d8br")
+theme_override_font_sizes/font_size = 60
+text = "
+
+
+
+Santa's Snowy Quest
+
+Publisher:
+Piotr Zarzycki
+
+Game Creator:
+Piotr Zarzycki
+
+
+Engines & Technologies Used:
+Godot 4
+C#"
+horizontal_alignment = 1
+
+[node name="Close" type="Button" parent="CanvasLayer/Credits"]
+texture_filter = 1
+offset_left = 20.5
+offset_top = 15.5
+offset_right = 155.5
+offset_bottom = 92.5
+theme = SubResource("Theme_06ff3")
+theme_override_fonts/font = ExtResource("1_8d8br")
+theme_override_font_sizes/font_size = 100
+text = "Close"
+
 [node name="BG" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1068, 536)
@@ -117,3 +182,4 @@ texture = ExtResource("3_fibbx")
 [connection signal="button_down" from="CanvasLayer/VBoxContainer/Settings" to="CanvasLayer" method="OnSettingsButtonPressed"]
 [connection signal="button_down" from="CanvasLayer/VBoxContainer/Credits" to="CanvasLayer" method="OnCreditsButtonPressed"]
 [connection signal="button_down" from="CanvasLayer/VBoxContainer/Quit" to="CanvasLayer" method="OnQuitButtonPressed"]
+[connection signal="button_down" from="CanvasLayer/Credits/Close" to="CanvasLayer" method="OnBackButtonPressed"]

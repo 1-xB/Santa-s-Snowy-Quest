@@ -180,7 +180,7 @@ offset_right = 92.0
 offset_bottom = 40.0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 60
-text = "10"
+text = "20"
 
 [node name="Control2" type="Control" parent="CanvasLayer/Levels/Level3/Price"]
 layout_mode = 1
@@ -243,7 +243,7 @@ offset_right = 92.0
 offset_bottom = 40.0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 60
-text = "15"
+text = "40"
 
 [node name="Control2" type="Control" parent="CanvasLayer/Levels/Level4/Price"]
 layout_mode = 1
@@ -306,7 +306,7 @@ offset_right = 92.0
 offset_bottom = 40.0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 60
-text = "20"
+text = "60"
 
 [node name="Control2" type="Control" parent="CanvasLayer/Levels/Level5/Price"]
 layout_mode = 1
