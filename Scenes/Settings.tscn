@@ -1,0 +1,133 @@
+[gd_scene load_steps=11 format=3 uid="uid://csm6ga8lbmvy"]
+
+[ext_resource type="Texture2D" uid="uid://cydhdenfxfcl2" path="res://Assets/Background/Layers/1.png" id="1_cgw3a"]
+[ext_resource type="Script" path="res://Scenes/Settings.cs" id="1_qv4sh"]
+[ext_resource type="Texture2D" uid="uid://0dvi2mwvy161" path="res://Assets/Background/Layers/7.png" id="2_ldiqd"]
+[ext_resource type="FontFile" uid="uid://cxraemhvap58" path="res://Assets/Font/MinimalPixelFont.ttf" id="3_8rfen"]
+[ext_resource type="Script" path="res://Game/Music/MusicSlider.cs" id="4_50maa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uc0uj"]
+bg_color = Color(0.261094, 0.66797, 0.950897, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.0646617, 0.269326, 0.371408, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_top = 6.0
+expand_margin_right = 10.0
+expand_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_faw4s"]
+bg_color = Color(0.0661545, 0.436139, 0.660095, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+expand_margin_left = 5.0
+expand_margin_top = 2.0
+expand_margin_right = 5.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mod6t"]
+bg_color = Color(0.0756167, 0.462442, 0.637484, 1)
+border_width_left = 10
+border_width_bottom = 10
+border_color = Color(0.154948, 0.43665, 0.573065, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bb8h7"]
+bg_color = Color(0.170862, 0.646532, 0.873217, 1)
+border_width_left = 10
+border_width_bottom = 10
+border_color = Color(0.195712, 0.519502, 0.674458, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_acar8"]
+Button/styles/hover = SubResource("StyleBoxFlat_mod6t")
+Button/styles/normal = SubResource("StyleBoxFlat_bb8h7")
+
+[node name="Settings" type="CanvasLayer"]
+script = ExtResource("1_qv4sh")
+
+[node name="BG" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1032, 544)
+scale = Vector2(4, 4)
+texture = ExtResource("1_cgw3a")
+
+[node name="7" type="Sprite2D" parent="."]
+position = Vector2(1034, 543)
+scale = Vector2(4, 4)
+texture = ExtResource("2_ldiqd")
+
+[node name="Settings" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.0
+offset_right = 126.0
+offset_bottom = 71.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_8rfen")
+theme_override_font_sizes/font_size = 240
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -244.0
+offset_top = -96.0
+offset_right = 384.0
+offset_bottom = 116.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 22
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8rfen")
+theme_override_font_sizes/font_size = 150
+text = "Music volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_uc0uj")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_faw4s")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_faw4s")
+value = 50.0
+script = ExtResource("4_50maa")
+
+[node name="Back" type="Button" parent="."]
+texture_filter = 1
+offset_left = 21.0
+offset_top = 12.0
+offset_right = 255.0
+offset_bottom = 96.0
+theme = SubResource("Theme_acar8")
+theme_override_fonts/font = ExtResource("3_8rfen")
+theme_override_font_sizes/font_size = 100
+text = "Save & Back
+"
+
+[connection signal="value_changed" from="VBoxContainer/HSlider" to="VBoxContainer/HSlider" method="OnValueChanged"]
+[connection signal="button_down" from="Back" to="." method="OnBackButtonPressed"]

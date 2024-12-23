@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cydhdenfxfcl2" path="res://Assets/Background/Layers/1.png" id="4_shrc7"]
 [ext_resource type="Texture2D" uid="uid://d2gfuynfcn3sb" path="res://Assets/Background/Layers/6.png" id="5_isnap"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mod6t"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lywed"]
 bg_color = Color(0.0756167, 0.462442, 0.637484, 1)
 border_width_left = 10
 border_width_bottom = 10
@@ -17,7 +17,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bb8h7"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s0oe4"]
 bg_color = Color(0.170862, 0.646532, 0.873217, 1)
 border_width_left = 10
 border_width_bottom = 10
@@ -28,8 +28,8 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="Theme" id="Theme_e48n8"]
-Button/styles/hover = SubResource("StyleBoxFlat_mod6t")
-Button/styles/normal = SubResource("StyleBoxFlat_bb8h7")
+Button/styles/hover = SubResource("StyleBoxFlat_lywed")
+Button/styles/normal = SubResource("StyleBoxFlat_s0oe4")
 
 [node name="LevelMenu" type="Node2D"]
 
