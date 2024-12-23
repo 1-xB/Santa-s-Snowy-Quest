@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://Game/Music/MusicPlayer.cs" id="1_ilgc0"]
 
 [node name="Music_Player" type="AudioStreamPlayer"]
+process_mode = 3
 script = ExtResource("1_ilgc0")

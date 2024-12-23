@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3q2anusj32wm"]
+[gd_scene load_steps=10 format=3 uid="uid://d3q2anusj32wm"]
 
 [ext_resource type="Texture2D" uid="uid://xk2ne28s5ope" path="res://Assets/Coin/Coin.png" id="1_qkx1n"]
 [ext_resource type="Script" path="res://Game/Coin/Coin.cs" id="1_xiklu"]
@@ -42,7 +42,10 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="Coin" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yms52"]
+size = Vector2(3, 0)
+
+[node name="Coin" type="CharacterBody2D"]
 script = ExtResource("1_xiklu")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -56,5 +59,9 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_xoeoi")
 autoplay = "default"
 frame_progress = 0.293335
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 5)
+shape = SubResource("RectangleShape2D_yms52")
 
 [connection signal="body_entered" from="Area2D" to="." method="OnBodyEntered"]
