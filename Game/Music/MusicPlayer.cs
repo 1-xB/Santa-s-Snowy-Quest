@@ -112,12 +112,18 @@ public partial class MusicPlayer : AudioStreamPlayer
 
     public void SaveSettings()
     {
-        // pobieram coiny bo inaczej sie nie zapisują idk czemu
-        float coins = (int)_configFile.GetValue("player", "coins");
-        _configFile.SetValue("player", "coins", coins);
-
+        Error error = _configFile.Load(_saveSavePath);
+        if (error != Error.Ok)
+        {
+            GD.Print("Error loading file");
+        }
+        else
+        {
+            GD.Print("File loaded");
+        }
+        // Naprawione : Trzeba było załadować kolejny raz plik, bo kod pamieta plik z którego wczytał ostatnio
         _configFile.SetValue("Settings", "volume", Volume);
-        Error error = _configFile.Save(_saveSavePath);
+        Error error2 = _configFile.Save(_saveSavePath);
         if (error != Error.Ok)
         {
             GD.Print("Error saving file");
