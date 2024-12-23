@@ -10,8 +10,6 @@ public partial class GameManager : Node
     [Export] CoinCounter _coinCounter;
 
     private int _coins = 0;
-    private string _saveSavePath = "user://data.cfg";
-    private ConfigFile _configFile = new ConfigFile();
 
     public override void _Ready()
     {
