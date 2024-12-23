@@ -31,7 +31,7 @@
 [ext_resource type="Script" path="res://Scenes/Transition.cs" id="27_v5l57"]
 [ext_resource type="Material" uid="uid://bim62unaph6va" path="res://Scenes/Levels/snow.tres" id="30_ki05o"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30jks"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cnae0"]
 texture = ExtResource("1_hekee")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -482,7 +482,7 @@ texture = ExtResource("1_hekee")
 19:11/0 = 0
 19:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_isxm5"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m2r03"]
 texture = ExtResource("2_u6ur4")
 0:0/0 = 0
 0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -493,7 +493,7 @@ texture = ExtResource("2_u6ur4")
 1:1/0 = 0
 1:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_64bac"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_if14e"]
 texture = ExtResource("5_3r1d2")
 2:0/0 = 0
 3:0/0 = 0
@@ -575,7 +575,7 @@ texture = ExtResource("5_3r1d2")
 4:13/0 = 0
 5:13/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jet2m"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lqfni"]
 texture = ExtResource("3_xgqo1")
 0:0/0 = 0
 0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -586,7 +586,7 @@ texture = ExtResource("3_xgqo1")
 1:1/0 = 0
 1:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_spxey"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m7vl2"]
 texture = ExtResource("4_pe845")
 0:0/0 = 0
 0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -597,7 +597,7 @@ texture = ExtResource("4_pe845")
 1:1/0 = 0
 1:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ri8j3"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f36gw"]
 texture = ExtResource("5_vky2f")
 0:0/0 = 0
 0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -608,7 +608,7 @@ texture = ExtResource("5_vky2f")
 1:1/0 = 0
 1:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gs6yb"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tinb6"]
 texture = ExtResource("6_kkjin")
 0:0/0 = 0
 0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -619,7 +619,7 @@ texture = ExtResource("6_kkjin")
 1:1/0 = 0
 1:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1y34k"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_alm8x"]
 texture = ExtResource("7_y76e8")
 0:0/0 = 0
 0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -630,7 +630,7 @@ texture = ExtResource("7_y76e8")
 1:1/0 = 0
 1:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0c3ra"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bc5ql"]
 texture = ExtResource("1_hekee")
 0:0/0 = 0
 1:0/0 = 0
@@ -865,7 +865,7 @@ texture = ExtResource("1_hekee")
 19:11/0 = 0
 19:11/0/physics_layer_2/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_om0w8"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vgy6d"]
 texture = ExtResource("10_5mb5k")
 4:0/0 = 0
 5:0/0 = 0
@@ -914,16 +914,16 @@ physics_layer_2/collision_layer = 5
 physics_layer_2/collision_mask = 4
 physics_layer_3/collision_layer = 8
 physics_layer_3/collision_mask = 8
-sources/0 = SubResource("TileSetAtlasSource_30jks")
-sources/1 = SubResource("TileSetAtlasSource_isxm5")
-sources/2 = SubResource("TileSetAtlasSource_jet2m")
-sources/3 = SubResource("TileSetAtlasSource_spxey")
-sources/4 = SubResource("TileSetAtlasSource_ri8j3")
-sources/5 = SubResource("TileSetAtlasSource_gs6yb")
-sources/6 = SubResource("TileSetAtlasSource_1y34k")
-sources/7 = SubResource("TileSetAtlasSource_0c3ra")
-sources/9 = SubResource("TileSetAtlasSource_om0w8")
-sources/10 = SubResource("TileSetAtlasSource_64bac")
+sources/0 = SubResource("TileSetAtlasSource_cnae0")
+sources/1 = SubResource("TileSetAtlasSource_m2r03")
+sources/2 = SubResource("TileSetAtlasSource_lqfni")
+sources/3 = SubResource("TileSetAtlasSource_m7vl2")
+sources/4 = SubResource("TileSetAtlasSource_f36gw")
+sources/5 = SubResource("TileSetAtlasSource_tinb6")
+sources/6 = SubResource("TileSetAtlasSource_alm8x")
+sources/7 = SubResource("TileSetAtlasSource_bc5ql")
+sources/9 = SubResource("TileSetAtlasSource_vgy6d")
+sources/10 = SubResource("TileSetAtlasSource_if14e")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkn4x"]
 size = Vector2(49, 64.5)
@@ -981,7 +981,7 @@ _data = {
 "RESET": SubResource("Animation_mu4hr")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7py2"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6med5"]
 bg_color = Color(0.0756167, 0.462442, 0.637484, 1)
 border_width_left = 10
 border_width_bottom = 10
@@ -991,7 +991,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opd6c"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rt3fa"]
 bg_color = Color(0.170862, 0.646532, 0.873217, 1)
 border_width_left = 10
 border_width_bottom = 10
@@ -1002,8 +1002,8 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="Theme" id="Theme_4dqey"]
-Button/styles/hover = SubResource("StyleBoxFlat_n7py2")
-Button/styles/normal = SubResource("StyleBoxFlat_opd6c")
+Button/styles/hover = SubResource("StyleBoxFlat_6med5")
+Button/styles/normal = SubResource("StyleBoxFlat_rt3fa")
 
 [node name="Level1" type="Node2D"]
 
@@ -1020,6 +1020,7 @@ process_mode = 3
 
 [node name="Coin2" parent="UI" node_paths=PackedStringArray("_coinLabel") instance=ExtResource("3_56j2u")]
 _coinLabel = NodePath("HBoxContainer/text/Coins")
+metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Coin2"]
 process_mode = 3
@@ -1078,6 +1079,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="UI/Hearts"]
 process_mode = 3
@@ -1135,9 +1137,6 @@ tile_set = SubResource("TileSet_n1c6k")
 [node name="WrongElf" parent="Objects" instance=ExtResource("12_7lsvt")]
 position = Vector2(296, 157)
 
-[node name="Box" parent="Objects" instance=ExtResource("13_5360d")]
-position = Vector2(731, 209)
-
 [node name="box" parent="Objects" instance=ExtResource("13_5360d")]
 position = Vector2(612, 27)
 
@@ -1150,33 +1149,26 @@ position = Vector2(446, 62)
 [node name="WrongElf4" parent="Objects" instance=ExtResource("12_7lsvt")]
 position = Vector2(136, 14)
 
-[node name="Coin" parent="Objects" node_paths=PackedStringArray("label") instance=ExtResource("14_aaair")]
+[node name="Coin" parent="Objects" instance=ExtResource("14_aaair")]
 position = Vector2(176, 201)
-label = NodePath("../../UI/Coin2/HBoxContainer/text/Coins")
 
-[node name="Coin2" parent="Objects" node_paths=PackedStringArray("label") instance=ExtResource("14_aaair")]
+[node name="Coin2" parent="Objects" instance=ExtResource("14_aaair")]
 position = Vector2(258, 171)
-label = NodePath("../../UI/Coin2/HBoxContainer/text/Coins")
 
-[node name="Coin3" parent="Objects" node_paths=PackedStringArray("label") instance=ExtResource("14_aaair")]
+[node name="Coin3" parent="Objects" instance=ExtResource("14_aaair")]
 position = Vector2(391, 178)
-label = NodePath("../../UI/Coin2/HBoxContainer/text/Coins")
 
-[node name="Coin4" parent="Objects" node_paths=PackedStringArray("label") instance=ExtResource("14_aaair")]
+[node name="Coin4" parent="Objects" instance=ExtResource("14_aaair")]
 position = Vector2(560, 154)
-label = NodePath("../../UI/Coin2/HBoxContainer/text/Coins")
 
-[node name="Coin5" parent="Objects" node_paths=PackedStringArray("label") instance=ExtResource("14_aaair")]
+[node name="Coin5" parent="Objects" instance=ExtResource("14_aaair")]
 position = Vector2(465, 72)
-label = NodePath("../../UI/Coin2/HBoxContainer/text/Coins")
 
-[node name="Coin6" parent="Objects" node_paths=PackedStringArray("label") instance=ExtResource("14_aaair")]
+[node name="Coin6" parent="Objects" instance=ExtResource("14_aaair")]
 position = Vector2(821, 215)
-label = NodePath("../../UI/Coin2/HBoxContainer/text/Coins")
 
-[node name="Coin7" parent="Objects" node_paths=PackedStringArray("label") instance=ExtResource("14_aaair")]
+[node name="Coin7" parent="Objects" instance=ExtResource("14_aaair")]
 position = Vector2(849, 38)
-label = NodePath("../../UI/Coin2/HBoxContainer/text/Coins")
 
 [node name="WrongElf5" parent="Objects" instance=ExtResource("15_iqktm")]
 position = Vector2(691, 204)
@@ -1186,7 +1178,7 @@ position = Vector2(808, 37)
 scale = Vector2(1.6292, 2)
 
 [node name="Box2" parent="Objects" instance=ExtResource("13_5360d")]
-position = Vector2(652, 210)
+position = Vector2(603, 210)
 
 [node name="Door" parent="Objects" instance=ExtResource("18_4kbfy")]
 position = Vector2(918, 127)
@@ -1279,6 +1271,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationManager"]
 libraries = {

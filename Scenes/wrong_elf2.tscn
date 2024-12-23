@@ -64,7 +64,7 @@ radius = 15.0
 height = 44.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8wdh8"]
-size = Vector2(99.4584, 5)
+size = Vector2(131.396, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jbo6"]
 size = Vector2(14.0417, 5.33331)
@@ -95,13 +95,13 @@ shape = SubResource("CapsuleShape2D_jg3cu")
 [node name="Left Vision" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left Vision"]
-position = Vector2(-66.6667, 11.6667)
+position = Vector2(-85, 11.6667)
 shape = SubResource("RectangleShape2D_8wdh8")
 
 [node name="Right Vision" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right Vision"]
-position = Vector2(70, 13.3333)
+position = Vector2(85.9687, 13.3333)
 shape = SubResource("RectangleShape2D_8wdh8")
 
 [node name="Left Collider" type="Area2D" parent="."]
