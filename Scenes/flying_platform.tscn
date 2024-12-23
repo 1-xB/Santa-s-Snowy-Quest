@@ -14,7 +14,7 @@ size = Vector2(3, 25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypwm7"]
 size = Vector2(3, 18)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="FlyingPlatform" type="CharacterBody2D"]
 script = ExtResource("1_so32g")
 
 [node name="1" type="Sprite2D" parent="."]

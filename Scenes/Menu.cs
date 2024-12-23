@@ -5,7 +5,8 @@ public partial class Menu : CanvasLayer
 {
     [Export] private PackedScene _levelMenuScene;
     [Export] private PackedScene _settingsScene;
-    [Export] private PackedScene _creditsScene;
+
+    [Export] ColorRect _credits;
     
     private void OnPlayButtonPressed()
     {
@@ -19,12 +20,17 @@ public partial class Menu : CanvasLayer
     
     private void OnCreditsButtonPressed()
     {
-        GetTree().ChangeSceneToPacked(_creditsScene);
+        _credits.Visible = true;
     }
     
     private void OnQuitButtonPressed()
     {
         GetTree().Quit();
+    }
+
+    private void OnBackButtonPressed()
+    {
+        _credits.Visible = false;
     }
     
 }

@@ -8,9 +8,9 @@ public partial class LevelMenu : CanvasLayer
     int _coins = 0;
 
     int _level2Cost = 5;
-    int _level3Cost = 10;
-    int _level4Cost = 15;
-    int _level5Cost = 20;
+    int _level3Cost = 20;
+    int _level4Cost = 40;
+    int _level5Cost = 60;
 
     public override void _Ready() 
     {

@@ -1348,17 +1348,6 @@ theme_override_font_sizes/font_size = 100
 text = "Restart
 "
 
-[node name="Instructions" type="Button" parent="PauseMenu/Menu/VBoxContainer"]
-process_mode = 3
-z_index = 2
-texture_filter = 1
-layout_mode = 2
-theme = SubResource("Theme_4dqey")
-theme_override_fonts/font = ExtResource("2_yanx7")
-theme_override_font_sizes/font_size = 100
-text = "Instructions
-"
-
 [node name="Back" type="Button" parent="PauseMenu/Menu/VBoxContainer"]
 process_mode = 3
 z_index = 2
