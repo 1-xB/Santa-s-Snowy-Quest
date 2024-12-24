@@ -77,9 +77,9 @@ public partial class WrongElf2 : CharacterBody2D
         if (_isAttacking && _canThrow)
         {
             Snowball snowball = (Snowball)GD.Load<PackedScene>("res://Scenes/Snowball.tscn").Instantiate();
-            GetTree().Root.AddChild(snowball);
+            GetTree().CurrentScene.AddChild(snowball);
             snowball.Position = Position;
-            if (!_isMovingRight) snowball.Speed = -snowball.Speed;
+            if (_animatedSprite.FlipH) snowball.Speed = -snowball.Speed;
             snowball.SetOwner(this);
             _canThrow = false;
             _throwTimer.Start();
@@ -159,7 +159,7 @@ public partial class WrongElf2 : CharacterBody2D
         if (_health <= 0)
         {
             Coin coin = (Coin)GD.Load<PackedScene>("res://Scenes/coin.tscn").Instantiate();
-            GetTree().Root.AddChild(coin);
+            GetTree().CurrentScene.AddChild(coin);
             coin.Position = Position;
             QueueFree();
         }

@@ -7,7 +7,7 @@ public partial class Snowball : Area2D
     Vector2 _velocity = Vector2.Zero;
     [Export] AnimatedSprite2D _animatedSprite;
     public float Speed = 20000f;
-    float _gravity = 200f; 
+    float _gravity = 1000f; 
     bool destroy = false;
 
     private Node2D _owner;
