@@ -6,13 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://d2s4lnkadopcw" path="res://Assets/Tiles/Tile_03.png" id="3_gn0u6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhtaj"]
-size = Vector2(94, 3)
+size = Vector2(98, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5dyft"]
-size = Vector2(3, 25)
+size = Vector2(3, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypwm7"]
-size = Vector2(3, 18)
+size = Vector2(2.5, 15)
 
 [node name="FlyingPlatform" type="CharacterBody2D"]
 script = ExtResource("1_so32g")
@@ -37,9 +37,9 @@ shape = SubResource("RectangleShape2D_uhtaj")
 one_way_collision_margin = 128.0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-45.5, -2.5)
+position = Vector2(-45.5, -3.5)
 shape = SubResource("RectangleShape2D_5dyft")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(46, -3)
+position = Vector2(45.75, -4.5)
 shape = SubResource("RectangleShape2D_ypwm7")
