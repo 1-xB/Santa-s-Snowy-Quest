@@ -1,3 +1,9 @@
+# Santa's Snowy Quest
+
+Welcome to **Santa's Snowy Quest**, a fun holiday adventure game where you help Santa save Christmas! Here's everything you need to know about gameplay, controls, asset sources, and upcoming features.
+
+---
+
 ## 🎮 Gameplay
 
 ### Objectives:
@@ -15,10 +21,10 @@
 ## 📜 Controls
 
 - **Movement**:
-	Use **left**, **right**, and **jump** keys to move through the levels.
+    Use **left**, **right**, and **jump** keys to move through the levels.
 - **Abilities**:
-- **Throw snowballs**: Left mouse button to attack elves.
-- **Push boxes**: Move objects to solve puzzles or block snowballs.
+    - **Throw snowballs**: Left mouse button to attack elves.
+    - **Push boxes**: Move objects to solve puzzles or block snowballs.
 
 ---
 
@@ -51,11 +57,42 @@ There are some minor bugs that might still be in the game, but I'm working hard 
 1. Download the game files from the **Releases** section (as described above).
 2. Start the game and have fun!
 3. You can play around with settings as per your likings and enjoy the whole saving of Christmas!
+
+---
+
+## 🛒 Asset Sources
+
+
+The following assets are used in **Santa's Snowy Quest** and can be purchased from the respective stores. Once downloaded, place the assets in the correct folders:
+
+- **Backgrounds**:  
+  Place your background images in the `Assets/Background` folder.  
+  [Link to purchase background assets](https://free-game-assets.itch.io/snow-tileset-pixel-art)
+
+- **Boxes**:  
+  Place your box or container images in the `Assets/Boxes` folder.  
+  [Link to purchase box assets](https://free-game-assets.itch.io/snow-tileset-pixel-art)
+
+- **Coins**:  
+  Place any coin or collectible assets in the `Assets/Coin` folder.  
+  [Link to purchase coin assets](https://free-game-assets.itch.io/snow-tileset-pixel-art)
+
+- **Tileset**:  
+  Place tile-based graphics like ground or walls in the `Assets/Tiles` folder.  
+  [Link to purchase tile assets](https://free-game-assets.itch.io/snow-tileset-pixel-art)
+
+- **Music**:  
+  Place music tracks in the `Assets/Music` folder.  
+  [Link to purchase music tracks](https://ryancavendell.itch.io/chiptune-christmas-songs)
+
+Feel free to check out the source links to support the artists who contributed to these amazing assets!
+
 ---
 
 ## 💬 About the Developer
 This game was made for fun, to add some cheer during the holiday seasons. I will continually work on this to improve it and add interesting features. Stay tuned!
 
----
+## 💬 About the Developer
+This game was made for fun, to add some cheer during the holiday seasons. I will continually work on this to improve it and add interesting features. Stay tuned!
 
-Thanks for playing Santa's Snowy Quest! 🎅🎄
+Thanks for playing **Santa's Snowy Quest**! 🎅🎄
