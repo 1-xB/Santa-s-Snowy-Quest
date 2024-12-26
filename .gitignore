@@ -5,3 +5,12 @@
 # editors folder
 .vscode/
 .idea/
+
+# Paid Assets
+
+Assets/Background
+Assets/Boxes
+Assets/Coin
+Assets/Tiles
+Assets/Music
+
